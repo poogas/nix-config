@@ -11,6 +11,12 @@
     hyprpicker
     hyprshot
     hyprsunset
+    hyprlock 
+    libnotify 
+    wofi
+    mako
+    grim
+    slurp
     matugen
     grimblast
     nvtopPackages.nvidia
@@ -70,6 +76,7 @@
     ipcalc
 
     # --- Приложения с GUI ---
+    firefox
     telegram-desktop
 
     # --- Разное ---

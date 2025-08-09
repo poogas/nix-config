@@ -11,7 +11,6 @@
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
-      # --- Карта хостов, как и была ---
       nix-hosts = {
         "qwerty" = {
           username = "qwerty";
@@ -20,29 +19,22 @@
         };
       };
 
-      # --- ИСПРАВЛЕННАЯ функция-конструктор ---
-      # Она принимает имя хоста и его конфигурацию как два отдельных аргумента.
       makeSystem = hostname: config:
         nixpkgs.lib.nixosSystem {
           system = config.system;
-          specialArgs = { inherit inputs hostname; } // config; # Передаем hostname и всю конфигурацию хоста
+          specialArgs = { inherit inputs hostname; } // config;
 
           modules = [
-            # Системные модули
             ./system/configuration.nix
 
-            # Модуль Home Manager
             home-manager.nixosModules.home-manager
             {
-              # Конфигурация Home Manager для конкретного пользователя
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "hm-backup";
 
-              # Передаем аргументы в модули Home Manager
               home-manager.extraSpecialArgs = { inherit inputs hostname; } // config;
 
-              # Активируем конфигурацию для пользователя
               home-manager.users."${config.username}" = {
                 imports = [ ./home/home.nix ];
               };

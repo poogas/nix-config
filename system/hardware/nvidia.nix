@@ -16,6 +16,7 @@
     powerManagement = {
       enable = true;
       finegrained = true;
+      offload.enable = true;
     };
   };
 

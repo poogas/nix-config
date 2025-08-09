@@ -1,4 +1,4 @@
-{ username, homeStateVersion, ... }:
+{ username, stateVersion, ... }:
 
 {
   imports = [
@@ -7,5 +7,5 @@
 
   home.username = username;
   home.homeDirectory = "/home/${username}";
-  home.stateVersion = homeStateVersion;
+  home.stateVersion = stateVersion;
 }

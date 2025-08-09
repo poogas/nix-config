@@ -1,4 +1,3 @@
-# /etc/nixos/flake.nix
 {
   description = "NixOS configuration";
 
@@ -16,39 +15,34 @@
         "qwerty" = {
           username = "qwerty";
           system = "x86_64-linux";
-          systemStateVersion = "25.05";
-          homeStateVersion = "25.05";
+          stateVersion = "25.05";
         };
       };
-      makeSystem = { hostname, hostConfig }:
+
+      makeSystem = { hostname, config }:
         nixpkgs.lib.nixosSystem {
-          system = hostConfig.system;
-          specialArgs = {
-            inherit inputs;
-            hostname = hostname;
-            username = hostConfig.username;
-            stateVersion = hostConfig.systemStateVersion;
-          };
+          system = config.system;
+          specialArgs = { inherit inputs; } // config; 
+
           modules = [
             ./system/configuration.nix
+
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "hm-backup";
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-                username = hostConfig.username;
-                homeStateVersion = hostConfig.homeStateVersion;
+
+              home-manager.extraSpecialArgs = { inherit inputs; } // config;
+
+              home-manager.users."${config.username}" = {
+                imports = [ ./home/home.nix ];
               };
-              home-manager.users."${hostConfig.username}".imports = [ ./home/home.nix ];
             }
           ];
         };
     in
     {
-      nixosConfigurations = nixpkgs.lib.mapAttrs (hostname: hostConfig:
-        makeSystem { inherit hostname hostConfig; }
-      ) nix-hosts;
+      nixosConfigurations = nixpkgs.lib.mapAttrs makeSystem nix-hosts;
     };
 }

@@ -9,7 +9,5 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  drivers.nvidia.enable = true;
-
   system.stateVersion = stateVersion;
 }

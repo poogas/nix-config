@@ -5,19 +5,10 @@
 
   hardware.nvidia = {
     open = true;
-
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-
     modesetting.enable = true;
-
     nvidiaSettings = false;
-    nvidiaPersistenced = false;
-
-    powerManagement = {
-      enable = true;
-      finegrained = true;
-      offload.enable = true;
-    };
+    powerManagement.enable = false;
   };
 
   hardware.graphics = {

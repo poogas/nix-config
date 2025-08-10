@@ -1,15 +1,19 @@
-# https://github.com/HeyImKyu/fabric-flakes-example/blob/main/modules/home-manager/fabric/default.nix
-
 { config, pkgs, ... }:
-
+let
+  ax-shell = pkgs.fetchFromGitHub {
+    owner = "Axenide";
+    repo = "ax-shell";
+    rev = "254cd0f632213956debdc7b2a4494e9e5bfb395f";
+    hash = "sha256-yGzN9r+/wEPg8KteRGimCtCj1wc7Tp7rZhKJunfmUn4=";
+  };
+in
 {
   home.file."${config.xdg.configHome}/Ax-Shell" = {
-    source = ./ax-shell;
-    recursive = true;
+    source = ax-shell;
   };
 
   home.file.".local/share/fonts/tabler-icons.ttf" = {
-    source = ./ax-shell/assets/fonts/tabler-icons/tabler-icons.ttf;
+    source = "${ax-shell}/assets/fonts/tabler-icons/tabler-icons.ttf";
   };
 
   home.file."${config.xdg.configHome}/matugen/config.toml" = {
@@ -20,13 +24,9 @@
     matugen
     cava
     hyprsunset
-    hyprpicker
-    gpu-screen-recorder
     wlinhibit
-    grimblast
     tesseract
     imagemagick
-    nvtopPackages.nvidia
     nur.repos.HeyImKyu.fabric-cli
     (nur.repos.HeyImKyu.run-widget.override {
       extraPythonPackages = with python3Packages; [

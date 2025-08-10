@@ -47,4 +47,4 @@ output_path = "~/.config/matugen/config/hypr/colors.conf"
 [templates.ax-shell]
 input_path = "~/.config/Ax-Shell/config/matugen/templates/ax-shell.css"
 output_path = "~/.config/matugen/styles/colors.css"
-post_hook = "fabric-cli exec ax-shell 'app.set_css()' &"
+post_hook = "fabric-cli exec ax-shell 'app.set_css()' &; python3 ~/.config/Ax-Shell/vesktop_preprocessor.py &"

@@ -5,26 +5,26 @@
   home.packages = with pkgs; [
     # --- Утилиты Hyprland / Wayland (перенесены из system) ---
     brightnessctl
-    cava
+    # cava
     cliphist
-    gpu-screen-recorder-gtk
-    hyprpicker
+    # gpu-screen-recorder-gtk
+    # hyprpicker
     hyprshot
-    hyprsunset
+    # hyprsunset
     hyprlock 
     libnotify 
     wofi
     mako
     grim
     slurp
-    matugen
-    grimblast
-    nvtopPackages.nvidia
+    # matugen
+    # grimblast
+    # nvtopPackages.nvidia
     playerctl
     swappy
     swww
     wl-clipboard
-    wlinhibit
+    # wlinhibit
 
     # --- Основные утилиты командной строки ---
     unzip  # <--- ИСПРАВЛЕНО: убран .override
@@ -48,8 +48,8 @@
     # --- Инструменты для разработки и мониторинга ---
     neovim
     tmux
-    imagemagick
-    tesseract
+    # imagemagick
+    # tesseract
     nix-output-monitor
     hugo
     glow

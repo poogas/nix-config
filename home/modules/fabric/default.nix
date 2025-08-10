@@ -26,7 +26,7 @@
     grimblast
     tesseract
     imagemagick
-    nvtopPackages.full
+    nvtopPackages.nvidia
     nur.repos.HeyImKyu.fabric-cli
     (nur.repos.HeyImKyu.run-widget.override {
       extraPythonPackages = with python3Packages; [

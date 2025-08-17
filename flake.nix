@@ -13,9 +13,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    fabric-cli = {
+      url = "github:poogas/fabric-cli";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nur, home-manager, fabric-cli, ... }@inputs:
     let
       nix-hosts = {
         "qwerty" = {

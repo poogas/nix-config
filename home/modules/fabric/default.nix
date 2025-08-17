@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 let
   ax-shell = pkgs.fetchFromGitHub {
     owner = "Axenide";
@@ -27,7 +27,7 @@ in
     wlinhibit
     tesseract
     imagemagick
-    nur.repos.HeyImKyu.fabric-cli
+    inputs.fabric-cli.packages.${pkgs.system}.default
     (nur.repos.HeyImKyu.run-widget.override {
       extraPythonPackages = with python3Packages; [
         ijson

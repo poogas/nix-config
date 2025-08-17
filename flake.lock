@@ -60,6 +60,26 @@
         "type": "github"
       }
     },
+    "gray": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1734026029,
+        "narHash": "sha256-s9v9fkp+XrKqY81Z7ezxMikwcL4HHS3KvEwrrudJutw=",
+        "owner": "Fabric-Development",
+        "repo": "gray",
+        "rev": "d5a8452c39b074ef6da25be95305a22203cf230e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Fabric-Development",
+        "repo": "gray",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -104,11 +124,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755423035,
-        "narHash": "sha256-oqWm9uPNiBJgO/LfJK7xKKbfSySBq5nwn/WOaXTPimM=",
+        "lastModified": 1755426295,
+        "narHash": "sha256-WEC7T4rg14rTc4wYsISufqz+Badq3stx0FogziFU1/8=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "544bd04284061e2f14c6a2f9cb4e22f67ed91727",
+        "rev": "c4bef50946bc456245fbeb1775deabbd98f8a538",
         "type": "github"
       },
       "original": {
@@ -120,6 +140,7 @@
     "root": {
       "inputs": {
         "fabric-cli": "fabric-cli",
+        "gray": "gray",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nur": "nur"

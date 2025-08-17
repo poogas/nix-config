@@ -42,7 +42,7 @@ in
         chardet
       ];
       extraBuildInputs = [
-        nur.repos.HeyImKyu.fabric-gray
+        inputs.gray.packages.${pkgs.system}.default
         networkmanager
         networkmanager.dev
         playerctl

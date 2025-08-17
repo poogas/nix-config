@@ -18,9 +18,14 @@
       url = "github:poogas/fabric-cli";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    gray = {
+      url = "github:Fabric-Development/gray";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, fabric-cli, ... }@inputs:
+  outputs = { self, nixpkgs, nur, home-manager, fabric-cli, gray, ... }@inputs:
     let
       nix-hosts = {
         "qwerty" = {

@@ -3,7 +3,7 @@ let
   ax-shell = pkgs.fetchFromGitHub {
     owner = "Axenide";
     repo = "ax-shell";
-    rev = "ee40e0eb17f06a55e8c9f14ea3b3a448d1c95dab";
+    rev = "254cd0f632213956debdc7b2a4494e9e5bfb395f";
     hash = "";
   };
 in

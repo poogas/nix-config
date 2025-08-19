@@ -1,10 +1,10 @@
 { config, pkgs, inputs, ... }:
 let
   ax-shell = pkgs.fetchFromGitHub {
-    owner = "HeyImKyu";
+    owner = "poogas";
     repo = "ax-shell";
-    rev = "9150b78a0a951da9e180b0e42efcc0a6d723a1b3";
-    hash = "sha256-ezIkbNpQMcxl2Bc0nsW6FoMJps8dtjFWnFcEfEkmvYk=";
+    rev = "c845ae6add5b652f77f03612f329c8a3445b27ae";
+    hash = "";
   };
 in
 {

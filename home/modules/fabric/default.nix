@@ -3,8 +3,8 @@ let
   ax-shell = pkgs.fetchFromGitHub {
     owner = "HeyImKyu";
     repo = "ax-shell";
-    rev = "cf03d8ce63619413d59c92e3c2d465387deeb938";
-    hash = "sha256-HK/d/yse6AGv97e0sIWwmeg2cCPezL6kiix5ClgOx7E=";
+    rev = "9150b78a0a951da9e180b0e42efcc0a6d723a1b3";
+    hash = "sha256-ezIkbNpQMcxl2Bc0nsW6FoMJps8dtjFWnFcEfEkmvYk=";
   };
 in
 {

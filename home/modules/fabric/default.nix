@@ -4,7 +4,7 @@ let
     owner = "poogas";
     repo = "ax-shell";
     rev = "c845ae6add5b652f77f03612f329c8a3445b27ae";
-    hash = "";
+    hash = "sha256-97OUowhtEwLHm10/4PRqllOKXsw6jXxKGcwVFl/podw=";
   };
 in
 {

@@ -4,7 +4,7 @@ let
     owner = "HeyImKyu";
     repo = "ax-shell";
     rev = "cf03d8ce63619413d59c92e3c2d465387deeb938";
-    hash = "";
+    hash = "sha256-HK/d/yse6AGv97e0sIWwmeg2cCPezL6kiix5ClgOx7E=";
   };
 in
 {

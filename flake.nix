@@ -4,28 +4,13 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    fabric-cli = {
-      url = "github:poogas/fabric-cli";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    gray = {
-      url = "github:Fabric-Development/gray";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, fabric-cli, gray, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       nix-hosts = {
         "qwerty" = {
@@ -55,8 +40,6 @@
                 imports = [ ./home/home.nix ];
               };
             }
-
-	    nur.modules.nixos.default
           ];
         };
     in

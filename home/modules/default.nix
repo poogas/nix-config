@@ -7,7 +7,6 @@
     ./starship.nix
     ./hypridle.nix
     ./hyprlock.nix
-    ./fabric
     ./wallpapers
   ];
 }

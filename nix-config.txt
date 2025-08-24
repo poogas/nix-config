@@ -1,0 +1,1755 @@
+--- Файл: flake.nix ---
+
+{
+  description = "NixOS configuration";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland.url = "github:hyprwm/Hyprland";
+  };
+
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    let
+      nix-hosts = {
+        "qwerty" = {
+          username = "qwerty";
+          system = "x86_64-linux";
+          stateVersion = "25.05";
+        };
+      };
+
+      makeSystem = hostname: config:
+        nixpkgs.lib.nixosSystem {
+          system = config.system;
+          specialArgs = { inherit inputs hostname; } // config;
+
+          modules = [
+            ./system/configuration.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "hm-backup";
+
+              home-manager.extraSpecialArgs = { inherit inputs hostname; } // config;
+
+              home-manager.users."${config.username}" = {
+                imports = [ ./home/home.nix ];
+              };
+            }
+          ];
+        };
+    in
+    {
+      nixosConfigurations = nixpkgs.lib.mapAttrs makeSystem nix-hosts;
+    };
+}
+
+
+================================================================================
+
+--- Файл: flake.lock ---
+
+{
+  "nodes": {
+    "aquamarine": {
+      "inputs": {
+        "hyprutils": [
+          "hyprland",
+          "hyprutils"
+        ],
+        "hyprwayland-scanner": [
+          "hyprland",
+          "hyprwayland-scanner"
+        ],
+        "nixpkgs": [
+          "hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753216019,
+        "narHash": "sha256-zik7WISrR1ks2l6T1MZqZHb/OqroHdJnSnAehkE0kCk=",
+        "owner": "hyprwm",
+        "repo": "aquamarine",
+        "rev": "be166e11d86ba4186db93e10c54a141058bdce49",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "aquamarine",
+        "type": "github"
+      }
+    },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1747046372,
+        "narHash": "sha256-CIVLLkVgvHYbgI2UpXvIIBJ12HWgX+fjA8Xf8PUmqCY=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "9100a0f413b0c601e0533d1d94ffd501ce2e7885",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "gitignore": {
+      "inputs": {
+        "nixpkgs": [
+          "hyprland",
+          "pre-commit-hooks",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1709087332,
+        "narHash": "sha256-HG2cCnktfHsKV0s4XW83gU3F57gaTljL9KNSuG6bnQs=",
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
+        "rev": "637db329424fd7e46cf4185293b9cc8c88c95394",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1756022458,
+        "narHash": "sha256-J1i35r4HfNDdPpwL0vOBaZopQudAUVtartEerc1Jryc=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "9e3a33c0bcbc25619e540b9dfea372282f8a9740",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "hyprcursor": {
+      "inputs": {
+        "hyprlang": [
+          "hyprland",
+          "hyprlang"
+        ],
+        "nixpkgs": [
+          "hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753964049,
+        "narHash": "sha256-lIqabfBY7z/OANxHoPeIrDJrFyYy9jAM4GQLzZ2feCM=",
+        "owner": "hyprwm",
+        "repo": "hyprcursor",
+        "rev": "44e91d467bdad8dcf8bbd2ac7cf49972540980a5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprcursor",
+        "type": "github"
+      }
+    },
+    "hyprgraphics": {
+      "inputs": {
+        "hyprutils": [
+          "hyprland",
+          "hyprutils"
+        ],
+        "nixpkgs": [
+          "hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1754305013,
+        "narHash": "sha256-u+M2f0Xf1lVHzIPQ7DsNCDkM1NYxykOSsRr4t3TbSM4=",
+        "owner": "hyprwm",
+        "repo": "hyprgraphics",
+        "rev": "4c1d63a0f22135db123fc789f174b89544c6ec2d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprgraphics",
+        "type": "github"
+      }
+    },
+    "hyprland": {
+      "inputs": {
+        "aquamarine": "aquamarine",
+        "hyprcursor": "hyprcursor",
+        "hyprgraphics": "hyprgraphics",
+        "hyprland-protocols": "hyprland-protocols",
+        "hyprland-qtutils": "hyprland-qtutils",
+        "hyprlang": "hyprlang",
+        "hyprutils": "hyprutils",
+        "hyprwayland-scanner": "hyprwayland-scanner",
+        "nixpkgs": "nixpkgs",
+        "pre-commit-hooks": "pre-commit-hooks",
+        "systems": "systems",
+        "xdph": "xdph"
+      },
+      "locked": {
+        "lastModified": 1756022257,
+        "narHash": "sha256-BVYvquLQY3VjkqosOrLBPLUo2AwujQGS40DTuHYsYdg=",
+        "owner": "hyprwm",
+        "repo": "Hyprland",
+        "rev": "ced38b1b0f46f9fbdf9d37644d27bdbd2a29af1d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "Hyprland",
+        "type": "github"
+      }
+    },
+    "hyprland-protocols": {
+      "inputs": {
+        "nixpkgs": [
+          "hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1749046714,
+        "narHash": "sha256-kymV5FMnddYGI+UjwIw8ceDjdeg7ToDVjbHCvUlhn14=",
+        "owner": "hyprwm",
+        "repo": "hyprland-protocols",
+        "rev": "613878cb6f459c5e323aaafe1e6f388ac8a36330",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprland-protocols",
+        "type": "github"
+      }
+    },
+    "hyprland-qt-support": {
+      "inputs": {
+        "hyprlang": [
+          "hyprland",
+          "hyprland-qtutils",
+          "hyprlang"
+        ],
+        "nixpkgs": [
+          "hyprland",
+          "hyprland-qtutils",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprland",
+          "hyprland-qtutils",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1749154592,
+        "narHash": "sha256-DO7z5CeT/ddSGDEnK9mAXm1qlGL47L3VAHLlLXoCjhE=",
+        "owner": "hyprwm",
+        "repo": "hyprland-qt-support",
+        "rev": "4c8053c3c888138a30c3a6c45c2e45f5484f2074",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprland-qt-support",
+        "type": "github"
+      }
+    },
+    "hyprland-qtutils": {
+      "inputs": {
+        "hyprland-qt-support": "hyprland-qt-support",
+        "hyprlang": [
+          "hyprland",
+          "hyprlang"
+        ],
+        "hyprutils": [
+          "hyprland",
+          "hyprland-qtutils",
+          "hyprlang",
+          "hyprutils"
+        ],
+        "nixpkgs": [
+          "hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753819801,
+        "narHash": "sha256-tHe6XeNeVeKapkNM3tcjW4RuD+tB2iwwoogWJOtsqTI=",
+        "owner": "hyprwm",
+        "repo": "hyprland-qtutils",
+        "rev": "b308a818b9dcaa7ab8ccab891c1b84ebde2152bc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprland-qtutils",
+        "type": "github"
+      }
+    },
+    "hyprlang": {
+      "inputs": {
+        "hyprutils": [
+          "hyprland",
+          "hyprutils"
+        ],
+        "nixpkgs": [
+          "hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753622892,
+        "narHash": "sha256-0K+A+gmOI8IklSg5It1nyRNv0kCNL51duwnhUO/B8JA=",
+        "owner": "hyprwm",
+        "repo": "hyprlang",
+        "rev": "23f0debd2003f17bd65f851cd3f930cff8a8c809",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprlang",
+        "type": "github"
+      }
+    },
+    "hyprutils": {
+      "inputs": {
+        "nixpkgs": [
+          "hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1754481650,
+        "narHash": "sha256-6u6HdEFJh5gY6VfyMQbhP7zDdVcqOrCDTkbiHJmAtMI=",
+        "owner": "hyprwm",
+        "repo": "hyprutils",
+        "rev": "df6b8820c4a0835d83d0c7c7be86fbc555f1f7fd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprutils",
+        "type": "github"
+      }
+    },
+    "hyprwayland-scanner": {
+      "inputs": {
+        "nixpkgs": [
+          "hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1751897909,
+        "narHash": "sha256-FnhBENxihITZldThvbO7883PdXC/2dzW4eiNvtoV5Ao=",
+        "owner": "hyprwm",
+        "repo": "hyprwayland-scanner",
+        "rev": "fcca0c61f988a9d092cbb33e906775014c61579d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprwayland-scanner",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1754725699,
+        "narHash": "sha256-iAcj9T/Y+3DBy2J0N+yF9XQQQ8IEb5swLFzs23CdP88=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1755615617,
+        "narHash": "sha256-HMwfAJBdrr8wXAkbGhtcby1zGFvs+StOp19xNsbqdOg=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "20075955deac2583bb12f07151c2df830ef346b4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "pre-commit-hooks": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "gitignore": "gitignore",
+        "nixpkgs": [
+          "hyprland",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1754416808,
+        "narHash": "sha256-c6yg0EQ9xVESx6HGDOCMcyRSjaTpNJP10ef+6fRcofA=",
+        "owner": "cachix",
+        "repo": "git-hooks.nix",
+        "rev": "9c52372878df6911f9afc1e2a1391f55e4dfc864",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cachix",
+        "repo": "git-hooks.nix",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "hyprland": "hyprland",
+        "nixpkgs": "nixpkgs_2"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1689347949,
+        "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "xdph": {
+      "inputs": {
+        "hyprland-protocols": [
+          "hyprland",
+          "hyprland-protocols"
+        ],
+        "hyprlang": [
+          "hyprland",
+          "hyprlang"
+        ],
+        "hyprutils": [
+          "hyprland",
+          "hyprutils"
+        ],
+        "hyprwayland-scanner": [
+          "hyprland",
+          "hyprwayland-scanner"
+        ],
+        "nixpkgs": [
+          "hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753633878,
+        "narHash": "sha256-js2sLRtsOUA/aT10OCDaTjO80yplqwOIaLUqEe0nMx0=",
+        "owner": "hyprwm",
+        "repo": "xdg-desktop-portal-hyprland",
+        "rev": "371b96bd11ad2006ed4f21229dbd1be69bed3e8a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "xdg-desktop-portal-hyprland",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
+
+
+================================================================================
+
+--- Файл: README.md ---
+
+# Моя конфигурация NixOS
+
+Этот репозиторий содержит полную конфигурацию моей системы NixOS, управляемую с помощью Nix Flakes и Home Manager.
+
+## Структура
+
+- **flake.nix**: Главный файл, определяющий входы (inputs) и выходы (outputs) проекта. Собирает конфигурацию для каждого хоста.
+- **home/**: Конфигурация Home Manager. Здесь находятся все пользовательские настройки ("дотфайлы"), приложения и сервисы.
+- **system/**: Конфигурация NixOS. Здесь находятся все общесистемные настройки: ядро, драйверы, системные сервисы, настройки сети и т.д.
+
+
+================================================================================
+
+--- Файл: create_snapshot.py ---
+
+
+import os
+
+# --- НАСТРОЙКИ ---
+
+# 1. Путь к директории вашего проекта. Точка '.' означает текущую директорию,
+#    где будет запущен скрипт.
+ROOT_DIRECTORY = '.'
+
+# 2. Имя файла, в который будет сохранен результат.
+OUTPUT_FILENAME = 'nix-config.txt'
+
+# 3. Список директорий, которые нужно проигнорировать.
+EXCLUDE_DIRS = {
+    '.git',
+    '.vscode',
+    '__pycache__',
+    'node_modules',
+    'venv',
+    '.idea',
+    'dist',
+    'build'
+}
+
+# 4. Список файлов, которые нужно проигнорировать.
+EXCLUDE_FILES = {
+    '.gitignore',
+    'package-lock.json',
+    'yarn.lock',
+    '.env',
+    OUTPUT_FILENAME  # Исключаем сам выходной файл
+}
+
+# 5. Список расширений файлов, которые нужно проигнорировать (в основном бинарные файлы).
+EXCLUDE_EXTENSIONS = {
+    '.pyc',
+    '.pyo',
+    '.pyd',
+    '.so',
+    '.dll',
+    '.exe',
+    '.o',
+    '.a',
+    '.jpg',
+    '.jpeg',
+    '.png',
+    '.gif',
+    '.bmp',
+    '.tiff',
+    '.ico',
+    '.svg',
+    '.zip',
+    '.tar',
+    '.gz',
+    '.rar',
+    '.pdf',
+    '.doc',
+    '.docx',
+    '.xls',
+    '.xlsx',
+    '.ppt',
+    '.pptx',
+    '.odt',
+    '.ods',
+    '.odp',
+    '.mp3',
+    '.mp4',
+    '.avi',
+    '.mov',
+    '.wav',
+    '.flac',
+    '.db',
+    '.sqlite3'
+}
+
+# --- ОСНОВНОЙ КОД СКРИПТА ---
+
+def create_repository_snapshot():
+    """
+    Рекурсивно обходит директорию проекта и создает единый текстовый файл
+    с путями и содержимым всех неисключенных файлов.
+    """
+    # Открываем файл для записи с кодировкой UTF-8
+    with open(OUTPUT_FILENAME, 'w', encoding='utf-8') as outfile:
+        # Рекурсивно обходим все директории и файлы
+        for dirpath, dirnames, filenames in os.walk(ROOT_DIRECTORY, topdown=True):
+            # Исключаем ненужные директории из дальнейшего обхода
+            # Мы изменяем список dirnames "на лету", чтобы os.walk не заходил в них
+            dirnames[:] = [d for d in dirnames if d not in EXCLUDE_DIRS]
+
+            for filename in filenames:
+                # Пропускаем файлы по имени или расширению
+                if filename in EXCLUDE_FILES:
+                    continue
+                
+                file_extension = os.path.splitext(filename)[1]
+                if file_extension in EXCLUDE_EXTENSIONS:
+                    continue
+
+                full_path = os.path.join(dirpath, filename)
+                
+                # Получаем относительный путь для красивого вывода
+                relative_path = os.path.relpath(full_path, ROOT_DIRECTORY)
+
+                # Записываем заголовок с путем к файлу
+                header = f"--- Файл: {relative_path.replace(os.sep, '/')} ---\n\n"
+                outfile.write(header)
+
+                try:
+                    # Читаем содержимое файла и записываем его
+                    with open(full_path, 'r', encoding='utf-8', errors='ignore') as infile:
+                        outfile.write(infile.read())
+                    # Добавляем отступы для разделения файлов
+                    outfile.write('\n\n' + '='*80 + '\n\n')
+                except Exception as e:
+                    outfile.write(f"Не удалось прочитать файл. Ошибка: {e}\n")
+                    outfile.write('\n\n' + '='*80 + '\n\n')
+
+    print(f"Готово! Снимок репозитория успешно сохранен в файл: {OUTPUT_FILENAME}")
+
+if __name__ == '__main__':
+    create_repository_snapshot()
+
+
+================================================================================
+
+--- Файл: home/home.nix ---
+
+{ username, stateVersion, ... }:
+
+{
+  imports = [
+    ./modules
+  ];
+
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
+  home.stateVersion = stateVersion;
+}
+
+
+================================================================================
+
+--- Файл: home/README.md ---
+
+# Директория: home
+
+Здесь находится конфигурация для **Home Manager**. Она отвечает за пользовательскую среду: "дотфайлы", темы, переменные окружения и приложения, установленные для конкретного пользователя.
+
+## Структура
+
+- **`home.nix`**: Главный файл для пользователя, который импортирует все остальные модули.
+- **`modules/`**: Коллекция отдельных модулей, разбитых по программам и задачам (git, alacritty, hyprland и т.д.).
+
+
+================================================================================
+
+--- Файл: home/modules/alacritty.nix ---
+
+{
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      env.TERM = "xterm-256color";
+      font = { size = 12; draw_bold_text_with_bright_colors = true; };
+      scrolling.multiplier = 5;
+      selection.save_to_clipboard = true;
+    };
+  };
+}
+
+
+================================================================================
+
+--- Файл: home/modules/git.nix ---
+
+{ username, ... }:
+
+{
+  programs.git = {
+    enable = true;
+    userName = username;
+    userEmail = "temp@${username}.qq";
+  };
+}
+
+
+================================================================================
+
+--- Файл: home/modules/hypridle.nix ---
+
+# /etc/nixos/home-manager/modules/hypridle.nix
+{ pkgs, ... }:
+
+{
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        # Теперь просто вызываем hyprlock
+        lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
+        before_sleep_cmd = "${pkgs.hyprlock}/bin/hyprlock";
+        after_sleep_cmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+      };
+
+      listener = [
+        {
+          timeout = 300;
+          on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
+        }
+        {
+          timeout = 600;
+          on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+          on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+        }
+      ];
+    };
+  };
+}
+
+
+================================================================================
+
+--- Файл: home/modules/hyprlock.nix ---
+
+# /etc/nixos/home-manager/modules/hyprlock.nix
+{ ... }:
+
+{
+  # Создаем файл конфигурации для hyprlock
+  home.file.".config/hypr/hyprlock.conf".text = ''
+    background {
+        path = screenshot
+        blur_passes = 3
+        blur_size = 8
+    }
+
+    input-field {
+        monitor =
+        size = 250, 60
+        outline_thickness = 2
+        dots_size = 0.2 # Scale of input-field dots
+        dots_spacing = 0.2 # Spacing between dots
+        dots_center = true
+        fade_on_empty = false
+        font_color = rgb(202, 211, 245)
+        inner_color = rgb(30, 30, 46)
+        outer_color = rgb(137, 180, 250)
+        rounding = -1
+        placeholder_text = <i>Password...</i>
+    }
+
+    label {
+        monitor =
+        text = cmd[update:1000] echo "<b><big> $(date +"%H:%M") </big></b>"
+        color = rgba(255, 255, 255, 0.8)
+        font_size = 90
+        position = 0, 200
+        halign = center
+        valign = top
+    }
+  '';
+}
+
+
+================================================================================
+
+--- Файл: home/modules/starship.nix ---
+
+{
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+      aws.disabled = true;
+      gcloud.disabled = true;
+      line_break.disabled = true;
+    };
+  };
+}
+
+
+================================================================================
+
+--- Файл: home/modules/default.nix ---
+
+{
+  imports = [
+    ./alacritty.nix
+    ./git.nix
+    ./hyprland.nix
+    ./packages.nix
+    ./starship.nix
+    ./hypridle.nix
+    ./hyprlock.nix
+  ];
+}
+
+
+================================================================================
+
+--- Файл: home/modules/packages.nix ---
+
+# /etc/nixos/home/modules/packages.nix
+{ pkgs, ... }:
+
+{
+  home.packages = with pkgs; [
+    # --- Утилиты Hyprland / Wayland (перенесены из system) ---
+    brightnessctl
+    # cava
+    cliphist
+    # gpu-screen-recorder-gtk
+    # hyprpicker
+    hyprshot
+    # hyprsunset
+    hyprlock 
+    libnotify 
+    wofi
+    mako
+    grim
+    slurp
+    # matugen
+    # grimblast
+    # nvtopPackages.nvidia
+    playerctl
+    swappy
+    swww
+    wl-clipboard
+    # wlinhibit
+
+    # --- Основные утилиты командной строки ---
+    unzip  # <--- ИСПРАВЛЕНО: убран .override
+    zip
+    xz
+    p7zip
+    ripgrep
+    jq
+    yq-go
+    eza
+    fzf
+    file
+    which
+    tree
+    gnused
+    gnutar
+    gawk
+    zstd
+    gnupg
+
+    # --- Инструменты для разработки и мониторинга ---
+    neovim
+    tmux
+    # imagemagick
+    # tesseract
+    nix-output-monitor
+    hugo
+    glow
+    btop
+    iotop
+    iftop
+    strace
+    ltrace
+    lsof
+    sysstat
+    lm_sensors
+    ethtool
+    pciutils
+    usbutils
+
+    # --- Сетевые утилиты ---
+    mtr
+    iperf3
+    dnsutils
+    ldns
+    aria2
+    socat
+    nmap
+    ipcalc
+
+    # --- Приложения с GUI ---
+    firefox
+    telegram-desktop
+
+    # --- Разное ---
+    cowsay
+
+    pavucontrol
+    blueman
+  ];
+}
+
+
+================================================================================
+
+--- Файл: home/modules/hyprland.nix ---
+
+{ pkgs, ... }:
+
+{
+  wayland.windowManager.hyprland = {
+    enable = true;
+
+    settings = {
+      env = "XCURSOR_SIZE,24";
+      input = {
+        kb_layout = "us,ru";
+        kb_options = "grp:alt_shift_toggle";
+        follow_mouse = 1;
+      };
+      general = {
+        gaps_in = 5;
+        gaps_out = 20;
+        border_size = 2;
+        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        "col.inactive_border" = "rgba(595959aa)";
+        layout = "dwindle";
+      };
+      decoration = {
+        rounding = 10;
+        blur = {
+          enabled = true;
+          size = 3;
+          passes = 1;
+        };
+      };
+      animations.enabled = true;
+      "$mainMod" = "SUPER";
+      bind = [
+        "$mainMod, Q, exec, alacritty"
+        "$mainMod, C, killactive,"
+        "$mainMod, M, exit,"
+        "$mainMod, E, exec, dolphin"
+        "$mainMod, V, togglefloating,"
+        "$mainMod, R, exec, wofi --show drun"
+        "$mainMod, P, pseudo,"
+        "$mainMod, J, togglesplit,"
+        "$mainMod, left, movefocus, l"
+        "$mainMod, right, movefocus, r"
+        "$mainMod, up, movefocus, u"
+        "$mainMod, down, movefocus, d"
+        "$mainMod, 1, workspace, 1"
+        "$mainMod, 2, workspace, 2"
+        "$mainMod, 3, workspace, 3"
+        "$mainMod SHIFT, 1, movetoworkspace, 1"
+        "$mainMod SHIFT, 2, movetoworkspace, 2"
+        "$mainMod SHIFT, 3, movetoworkspace, 3"
+      ];
+      exec-once = [
+	# "uwsm -- app run-widget ~/.config/Ax-Shell/main.py > /dev/null 2> ~/ax-shell.log & disown"
+      ];
+    };
+  };
+}
+
+
+================================================================================
+
+--- Файл: home/modules/README.md ---
+
+# Директория: home/modules
+
+Здесь каждый файл или группа файлов отвечает за настройку конкретного приложения или аспекта пользовательской среды через Home Manager.
+
+## Содержимое
+
+Каждый `.nix` файл здесь — это модуль Home Manager.
+- **packages.nix**: Список пакетов, устанавливаемых для пользователя (`home.packages`).
+- **git.nix**: Конфигурация Git (`.gitconfig`).
+- **alacritty.nix**: Конфигурация терминала Alacritty.
+- **hyprland.nix**: Пользовательская конфигурация Hyprland (`hyprland.conf`).
+- **hyprlock.nix**, **hypridle.nix**: Настройка блокировщика экрана и демона простоя.
+
+
+================================================================================
+
+--- Файл: system/configuration.nix ---
+
+{ config, pkgs, inputs, hostname, username, stateVersion, ... }:
+
+{
+  imports = [
+    ./core
+    ./hardware
+    ./desktop
+  ];
+
+  nixpkgs.config.allowUnfree = true;
+
+  hardware.enableRedistributableFirmware = true;
+
+  system.stateVersion = stateVersion;
+}
+
+
+================================================================================
+
+--- Файл: system/README.md ---
+
+# Директория: system
+
+Здесь находится вся конфигурация, специфичная для операционной системы NixOS. Настройки в этой директории применяются ко всей системе и ко всем пользователям.
+
+## Структура
+
+- **`configuration.nix`**: Главный файл системной конфигурации. Он импортирует все остальные модули из поддиректорий.
+- **`core/`**: Базовые настройки системы, не связанные с графическим интерфейсом.
+- **`desktop/`**: Настройки, относящиеся к графической среде (DE/WM, Display Manager и т.д.).
+- **`hardware/`**: Конфигурация, специфичная для конкретного оборудования (драйверы, настройки ядра).
+
+
+================================================================================
+
+--- Файл: system/core/boot.nix ---
+
+{
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
+}
+
+
+================================================================================
+
+--- Файл: system/core/hosts.nix ---
+
+{ config, pkgs, ... }:
+{
+  networking.hosts = {
+    "127.0.0.1" = [
+      "localhost"
+      "only-fans.uk"
+      "only-fans.me"
+      "onlyfans.wtf"
+      "iplogger.org"
+      "wl.gl"
+      "ed.tc"
+      "bc.ax"
+      "maper.info"
+      "2no.co"
+      "yip.su"
+      "iplis.ru"
+      "ezstat.ru"
+      "iplog.co"
+      "grabify.org"
+    ];
+
+    "::1" = [ "ip6-localhost" ];
+
+    "157.240.245.174" = [
+      "instagram.com"
+      "www.instagram.com"
+      "b.i.instagram.com"
+      "z-p42-chat-e2ee-ig.facebook.com"
+    ];
+
+    "3.66.189.153" = [
+      "protonmail.com"
+      "mail.proton.me"
+    ];
+
+    "64.233.164.198" = [
+      "yt3.ggpht.com"
+    ];
+
+    "204.12.192.222" = [
+      "chatgpt.com"
+      "ab.chatgpt.com"
+      "auth.openai.com"
+      "auth0.openai.com"
+      "platform.openai.com"
+      "cdn.oaistatic.com"
+      "files.oaiusercontent.com"
+      "cdn.auth0.com"
+      "tcr9i.chat.openai.com"
+      "webrtc.chatgpt.com"
+      "gemini.google.com"
+      "aistudio.google.com"
+      "generativelanguage.googleapis.com"
+      "aitsandbox-pa.googleapis.com"
+      "proactivebackend-pa.googleapis.com"
+      "o.pki.goog"
+      "labs.google"
+      "notebooklm.google"
+      "notebooklm.google.com"
+      "copilot.microsoft.com"
+      "sydney.bing.com"
+      "edgeservices.bing.com"
+      "api.spotify.com"
+      "xpui.app.spotify.com"
+      "appresolve.spotify.com"
+      "login5.spotify.com"
+      "login.app.spotify.com"
+      "encore.scdn.co"
+      "ap-gew1.spotify.com"
+      "gew1-spclient.spotify.com"
+      "spclient.wg.spotify.com"
+      "api-partner.spotify.com"
+      "aet.spotify.com"
+      "www.spotify.com"
+      "accounts.spotify.com"
+      "open.spotify.com"
+      "claude.ai"
+      "www.notion.so"
+      "www.canva.com"
+      "www.intel.com"
+      "developer.nvidia.com"
+      "builds.parsec.app"
+      "download.jetbrains.com"
+    ];
+
+    "204.12.192.221" = [
+      "rewards.bing.com"
+      "alkalimakersuite-pa.clients6.google.com"
+      "assistant-s3-pa.googleapis.com"
+      "www.dell.com"
+      "truthsocial.com"
+      "static-assets-1.truthsocial.com"
+      "images.tidal.com"
+      "fsu.fa.tidal.com"
+    ];
+
+    "78.40.217.193" = [
+      "xsts.auth.xboxlive.com"
+    ];
+
+    "50.7.87.86" = [
+      "xgpuwebf2p.gssv-play-prod.xboxlive.com"
+    ];
+
+    "50.7.87.85" = [
+      "codeium.com"
+    ];
+
+    "50.7.85.221" = [
+      "datalore.jetbrains.com"
+    ];
+
+    "50.7.87.83" = [
+      "proxy.individual.githubcopilot.com"
+    ];
+
+    "107.150.34.100" = [
+      "plugins.jetbrains.com"
+    ];
+
+    "3.160.212.81" = [
+      "cdn.id.supercell.com"
+    ];
+
+    "18.172.112.81" = [
+      "security.id.supercell.com"
+    ];
+
+    "3.165.113.14" = [
+      "accounts.supercell.com"
+    ];
+
+    "18.66.195.96" = [
+      "game-assets.clashroyaleapp.com"
+    ];
+
+    "51.158.190.98" = [
+      "game.clashroyaleapp.com"
+    ];
+
+    "3.162.38.39" = [
+      "game-assets.clashofclans.com"
+    ];
+
+    "70.34.251.56" = [
+      "gamea.clashofclans.com"
+    ];
+
+    "108.157.194.81" = [
+      "clashofclans.inbox.supercell.com"
+    ];
+
+    "179.43.168.109" = [
+      "game.brawlstarsgame.com"
+    ];
+
+    "18.239.69.129" = [
+      "game-assets.brawlstarsgame.com"
+    ];
+
+    "50.7.85.219" = [
+      "inference.codeium.com"
+      "datalore.jetbrains.com"
+      "www.tiktok.com"
+    ];
+
+    "142.54.189.106" = [
+      "web.archive.org"
+    ];
+  };
+}
+
+
+================================================================================
+
+--- Файл: system/core/localization.nix ---
+
+{
+  time.timeZone = "Europe/Volgograd";
+  i18n.defaultLocale = "en_US.UTF-8";
+}
+
+
+================================================================================
+
+--- Файл: system/core/networking.nix ---
+
+{
+  networking.networkmanager.enable = true;
+}
+
+
+================================================================================
+
+--- Файл: system/core/nix.nix ---
+
+{ username, ... }:
+
+{
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.trusted-users = [ "root" username ];
+
+  nix = {
+    settings.auto-optimise-store = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d";
+    };
+  };
+}
+
+
+================================================================================
+
+--- Файл: system/core/users.nix ---
+
+{ pkgs, username, ... }:
+
+{
+  users.users."${username}" = {
+    isNormalUser = true;
+    description = username;
+    extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
+    shell = pkgs.bash;
+  };
+}
+
+
+================================================================================
+
+--- Файл: system/core/bluetooth.nix ---
+
+{ pkgs, ... }:
+
+{
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    bluez-tools
+  ];
+}
+
+
+================================================================================
+
+--- Файл: system/core/security.nix ---
+
+{
+  security.rtkit.enable = true;
+  security.sudo.enable = true;
+}
+
+
+================================================================================
+
+--- Файл: system/core/pipewire.nix ---
+
+{ pkgs, ... }:
+{
+  services.pulseaudio.enable = false;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+  hardware.alsa.enablePersistence = true;
+  environment.systemPackages = with pkgs; [ pulseaudioFull ];
+}
+
+
+================================================================================
+
+--- Файл: system/core/README.md ---
+
+# Директория: system/core
+
+Здесь собраны фундаментальные модули NixOS, которые определяют ядро системы. Эти настройки, как правило, не зависят от графического окружения или конкретного оборудования.
+
+## Содержимое
+
+- **boot.nix**: Настройки загрузчика (systemd-boot).
+- **hosts.nix**: Статические записи DNS.
+- **localization.nix**: Настройки времени и языка.
+- **networking.nix**: Управление сетью (NetworkManager).
+- **nix.nix**: Настройки самого пакетного менеджера Nix (flakes, сборка мусора).
+- **packages.nix**: Общесистемные пакеты и сервисы, необходимые для базовой работы.
+- **users.nix**: Определение системных пользователей и групп.
+- **pipewire.nix**: Настройка звукового сервера PipeWire.
+- **bluetooth.nix**: Настройка сервиса Bluetooth.
+
+
+================================================================================
+
+--- Файл: system/core/zapret.nix ---
+
+{...}: {
+    services = {
+        zapret = {
+            enable = true;
+            configureFirewall = true;
+            qnum = 350;
+            params = [
+                "--wssize 1:6"
+
+                "--filter-tcp=80"
+                "--dpi-desync=multisplit"
+                "--dpi-desync-split-pos=10"
+                "--dpi-desync-repeats=6"
+                "--new"
+
+                "--filter-tcp=443"
+                "--dpi-desync=multidisorder"
+                "--dpi-desync-split-pos=1,midsld"
+                "--new"
+
+                "--filter-tcp=443"
+                "--dpi-desync=syndata"
+                "--dpi-desync-fake-syndata=0x00000000"
+                "--dpi-desync-ttl=10"
+                "--new"
+
+                "--filter-udp=443"
+                "--dpi-desync=fake"
+                "--dpi-desync-repeats=6"
+                "--dpi-desync-fake-quic=0x00000000"
+                "--new"
+
+                "--filter-udp=443"
+                "--dpi-desync=fake,udplen"
+                "--dpi-desync-udplen-increment=5"
+                "--dpi-desync-fake-tls=0x00000000"
+                "--dpi-desync-cutoff=n3"
+                "--dpi-desync-repeats=2"
+                "--new"
+
+                "--filter-tcp=443"
+                "--dpi-desync=split"
+                "--dpi-desync-fooling=md5sig,badseq"
+                "--dpi-desync-fake-tls=0x00000000"
+                "--dpi-desync-split-pos=1"
+                "--dpi-desync-repeats=10"
+                "--new"
+
+                "--filter-tcp=443"
+                "--dpi-desync=fake,split2"
+                "--dpi-desync-fooling=md5sig"
+                "--dpi-desync-fake-tls=0x00000000"
+                "--dpi-desync-split-seqovl=2"
+                "--dpi-desync-split-pos=2"
+
+                "--dpi-desync-autottl"
+                "--new"
+                "--filter-tcp=443"
+                "--dpi-desync=fake,split2"
+                "--dpi-desync-fooling=md5sig"
+                "--dpi-desync-fake-tls=0x00000000"
+                "--dpi-desync-split-seqovl=2"
+                "--dpi-desync-split-pos=2"
+                "--dpi-desync-autottl"
+                "--new"
+
+                "--filter-tcp=80"
+                "--dpi-desync=fake,split2"
+                "--dpi-desync-fooling=md5sig"
+                "--dpi-desync-fake-tls=0x00000000"
+                "--dpi-desync-autottl"
+                "--new"
+
+                "--filter-tcp=80"
+                "--dpi-desync-ttl=1"
+                "--dpi-desync-autottl=2"
+                "--dpi-desync-fake-tls=0x00000000"
+                "--dpi-desync-split-pos=1"
+                "--dpi-desync=fake,split2"
+                "--dpi-desync-repeats=6"
+                "--dpi-desync-fooling=md5sig"
+                "--new"
+            ];
+
+            whitelist = [
+                "googlevideo.com"
+                "youtu.be"
+                "youtube.com"
+                "youtubei.googleapis.com"
+                "googlevideo.com"
+                "youtu.be"
+                "youtube.com"
+                "youtubei.googleapis.com"
+                "youtubeembeddedplayer.googleapis.com"
+                "ytimg.l.google.com"
+                "ytimg.com"
+                "jnn-pa.googleapis.com"
+                "youtube-nocookie.com"
+                "youtube-ui.l.google.com"
+                "yt-video-upload.l.google.com"
+                "wide-youtube.l.google.com"
+                "youtubekids.com"
+                "ggpht.com"
+                "music.youtube.com"
+                "test.googlevideo.com"
+                "discord.com"
+                "gateway.discord.gg"
+                "cdn.discordapp.com"
+                "discordapp.net"
+                "discordapp.com"
+                "discord.gg"
+                "media.discordapp.net"
+                "images-ext-1.discordapp.net"
+                "discord.app"
+                "discord.media"
+                "discordcdn.com"
+                "discord.dev"
+                "discord.new"
+                "discord.gift"
+                "discordstatus.com"
+                "dis.gd"
+                "discord.co"
+                "discord-attachments-uploads-prd.storage.googleapis.com"
+                "7tv.app"
+                "7tv.io"
+                "10tv.app"
+                "x.com"
+                "t.co"
+                "ads-twitter.com"
+                "twimg.com"
+                "twitter.com"
+                "pscp.tv"
+                "twtrdns.net"
+                "twttr.com"
+                "periscope.tv"
+                "tweetdeck.com"
+                "twitpic.com"
+                "twitter.co"
+                "twitterinc.com"
+                "twitteroauth.com"
+                "twitterstat.us"
+            ];
+        };
+    };
+}
+
+
+================================================================================
+
+--- Файл: system/core/default.nix ---
+
+{
+  imports = [
+    ./boot.nix
+    ./nix.nix
+    ./networking.nix
+    ./bluetooth.nix
+    ./localization.nix
+    ./users.nix
+    ./hosts.nix
+    ./packages.nix
+    ./pipewire.nix
+    ./security.nix
+    ./zapret.nix
+  ];
+}
+
+
+================================================================================
+
+--- Файл: system/core/packages.nix ---
+
+{ pkgs, ... }:
+
+{
+  services.upower.enable = true;
+  services.power-profiles-daemon.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    webp-pixbuf-loader
+    # byedpi
+    # zapret
+  ];
+}
+
+
+================================================================================
+
+--- Файл: system/desktop/default.nix ---
+
+{
+  imports = [
+    ./hyprland.nix
+    ./sddm.nix
+  ];
+
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
+}
+
+
+================================================================================
+
+--- Файл: system/desktop/sddm.nix ---
+
+# /etc/nixos/system/desktop/sddm.nix
+{ ... }:
+
+{
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true; # Запускаем SDDM под Wayland
+  };
+}
+
+
+================================================================================
+
+--- Файл: system/desktop/hyprland.nix ---
+
+{ config, pkgs, inputs, ... }:
+
+{
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    xwayland.enable = true;
+    withUWSM = true;
+  };
+
+  environment.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
+  };
+
+
+  environment.systemPackages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+  ];
+}
+
+
+================================================================================
+
+--- Файл: system/desktop/README.md ---
+
+# Директория: system/desktop
+
+Здесь находятся все конфигурации, связанные с графическим пользовательским интерфейсом (GUI).
+
+## Содержимое
+
+- **sddm.nix**: Настройка менеджера входа в систему (Display Manager).
+- **hyprland.nix**: Настройка оконного менеджера Hyprland на системном уровне (включение самого пакета и портала).
+- **packages.nix**: Системные пакеты, необходимые для работы GUI-приложений (например, библиотеки для отображения форматов изображений).
+- **fonts.nix** (пример): Здесь можно было бы определить общесистемные шрифты.
+
+
+================================================================================
+
+--- Файл: system/hardware/hardware-configuration.nix ---
+
+# Do not modify this file!  It was generated by ‘nixos-generate-config’
+# and may be overwritten by future invocations.  Please make changes
+# to /etc/nixos/configuration.nix instead.
+{ config, lib, pkgs, modulesPath, ... }:
+
+{
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
+
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
+
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/bd2e33e4-8e28-4c15-ac28-65f92ac0eeb4";
+      fsType = "btrfs";
+      options = [ "subvol=@" ];
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/1F34-D7C4";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
+
+  swapDevices = [ ];
+
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+}
+
+
+================================================================================
+
+--- Файл: system/hardware/nvidia.nix ---
+
+{ pkgs, config, ... }:
+
+{
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    open = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    modesetting.enable = true;
+    nvidiaSettings = false;
+    powerManagement.enable = false;
+  };
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+      libvdpau
+      libva
+      vdpauinfo
+    ];
+  };
+}
+
+
+================================================================================
+
+--- Файл: system/hardware/README.md ---
+
+# Директория: system/hardware
+
+Здесь содержатся модули, которые напрямую конфигурируют физическое оборудование компьютера.
+
+## Содержимое
+
+- **`hardware-configuration.nix`**: Автоматически сгенерированный файл при установке NixOS. Содержит информацию о файловых системах и модулях ядра, необходимых для загрузки. **Редактировать с осторожностью.**
+- **`nvidia.nix`**: Настройки для видеокарты NVIDIA (драйверы, режимы работы).
+
+
+================================================================================
+
+--- Файл: system/hardware/all-firmware.nix ---
+
+{
+  hardware.enableAllFirmware = true;
+}
+
+
+================================================================================
+
+--- Файл: system/hardware/default.nix ---
+
+{
+  imports = [
+    ./hardware-configuration.nix
+    ./nvidia.nix
+    ./all-firmware.nix
+  ];
+}
+
+
+================================================================================
+

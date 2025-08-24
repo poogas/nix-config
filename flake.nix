@@ -29,19 +29,7 @@
 
           modules = [
             ./system/configuration.nix
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "hm-backup";
-
-              home-manager.extraSpecialArgs = { inherit inputs hostname; } // config;
-
-              home-manager.users."${config.username}" = {
-                imports = [ ./home/home.nix ];
-              };
-            }
+	    ./system/modules/home-manager.nix
           ];
         };
     in

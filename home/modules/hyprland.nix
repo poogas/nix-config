@@ -1,13 +1,8 @@
-# /etc/nixos/home-manager/modules/hyprland.nix
-
-# Мы больше не принимаем `hyprland-pkg`, а принимаем стандартный `pkgs`.
 { pkgs, ... }:
 
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    # Мы берем hyprland напрямую из `pkgs`, который доступен в Home Manager.
-    package = pkgs.hyprland;
 
     settings = {
       env = "XCURSOR_SIZE,24";

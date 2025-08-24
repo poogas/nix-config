@@ -9,14 +9,6 @@
     withUWSM = true;
   };
 
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";
     WLR_NO_HARDWARE_CURSORS = "1";

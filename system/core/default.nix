@@ -8,5 +8,7 @@
     ./users.nix
     ./hosts.nix
     ./packages.nix
+    ./pipewire.nix
+    ./security.nix
   ];
 }

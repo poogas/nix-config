@@ -81,5 +81,8 @@
 
     # --- Разное ---
     cowsay
+
+    pavucontrol
+    blueman
   ];
 }

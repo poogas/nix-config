@@ -23,6 +23,12 @@
     # 3. Пакет для оконного менеджера Hyprland, напрямую от разработчиков.
     # Это позволяет нам использовать самую последнюю версию Hyprland.
     hyprland.url = "github:hyprwm/Hyprland";
+
+    ax-shell = {
+      url = "github:poogas/Ax-Shell";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   # --- Выходы (Outputs) ---
@@ -30,7 +36,7 @@
   # В нашем случае, он производит конфигурации операционных систем.
   # Функция `{ self, nixpkgs, ... }@inputs:` принимает все наши 'входы' в качестве аргументов.
   # `@inputs` — это трюк, который позволяет собрать все входы в одну переменную `inputs`.
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ax-shell, ... }@inputs:
     # Блок `let...in` позволяет нам определить локальные переменные, которые мы будем
     # использовать ниже. Это помогает сделать код более чистым.
     let

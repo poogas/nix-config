@@ -49,9 +49,7 @@
         "$mainMod SHIFT, 2, movetoworkspace, 2"
         "$mainMod SHIFT, 3, movetoworkspace, 3"
       ];
-      exec-once = [
-	# "uwsm -- app run-widget ~/.config/Ax-Shell/main.py > /dev/null 2> ~/ax-shell.log & disown"
-      ];
+      exec-once = [];
     };
   };
 }

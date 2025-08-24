@@ -1,4 +1,3 @@
-# /etc/nixos/home/modules/packages.nix
 { pkgs, ... }:
 
 {

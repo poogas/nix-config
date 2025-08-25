@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   wayland.windowManager.hyprland = {
@@ -51,6 +51,7 @@
       ];
       exec-once = [
         "swww-daemon"
+        "ax-shell &> ${config.xdg.stateHome}/ax-shell/main.log"
       ];
     };
   };

@@ -26,7 +26,7 @@
 
     ax-shell = {
       url = "github:poogas/Ax-Shell";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
@@ -90,6 +90,7 @@
           # Здесь мы перечисляем все "части", из которых будет состоять наша система.
           # NixOS возьмет все эти файлы, объединит их в одну большую конфигурацию и соберет систему.
           modules = [
+            { nixpkgs.overlays = [ inputs.ax-shell.overlays.default ]; }
             # Основной файл с системными настройками (NixOS).
             ./system/configuration.nix
 

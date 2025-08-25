@@ -39,14 +39,16 @@
         "fabric-gtk": "fabric-gtk",
         "flake-utils": "flake-utils_2",
         "gray": "gray",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1756119081,
-        "narHash": "sha256-JnANXdmRgnhbrd/EADzPs1bBsWAzu1/BEQa052c8qUY=",
+        "lastModified": 1756142079,
+        "narHash": "sha256-8559hCAxoBEkD8BUPoIg+kXx0SExezyqfg3Zb35OHXg=",
         "owner": "poogas",
         "repo": "Ax-Shell",
-        "rev": "057fc2fca21414eb170bddb8ea3f67633640587b",
+        "rev": "8f5c13f53a93cc1e48de6dbc5f6d2482bef7b13a",
         "type": "github"
       },
       "original": {
@@ -282,7 +284,7 @@
         "hyprlang": "hyprlang",
         "hyprutils": "hyprutils",
         "hyprwayland-scanner": "hyprwayland-scanner",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "pre-commit-hooks": "pre-commit-hooks",
         "systems": "systems_4",
         "xdph": "xdph"
@@ -475,22 +477,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1755615617,
-        "narHash": "sha256-HMwfAJBdrr8wXAkbGhtcby1zGFvs+StOp19xNsbqdOg=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "20075955deac2583bb12f07151c2df830ef346b4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1755186698,
         "narHash": "sha256-wNO3+Ks2jZJ4nTHMuks+cxAiVBGNuEBXsT29Bz6HASo=",
         "owner": "NixOS",
@@ -505,7 +491,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1755615617,
         "narHash": "sha256-HMwfAJBdrr8wXAkbGhtcby1zGFvs+StOp19xNsbqdOg=",
@@ -549,7 +535,7 @@
         "ax-shell": "ax-shell",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_2"
       }
     },
     "systems": {

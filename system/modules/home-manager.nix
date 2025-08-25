@@ -13,7 +13,10 @@
     extraSpecialArgs = { inherit inputs username stateVersion; };
 
     users."${username}" = {
-      imports = [ ../../home/home.nix ];
+      imports = [
+        inputs.ax-shell.homeManagerModules.default
+        ../../home/home.nix
+      ];
     };
   };
 }

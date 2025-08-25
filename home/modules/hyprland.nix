@@ -49,7 +49,9 @@
         "$mainMod SHIFT, 2, movetoworkspace, 2"
         "$mainMod SHIFT, 3, movetoworkspace, 3"
       ];
-      exec-once = [];
+      exec-once = [
+        "swww-daemon"
+      ];
     };
   };
 }

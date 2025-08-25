@@ -7,6 +7,6 @@
     ./starship.nix
     ./hypridle.nix
     ./hyprlock.nix
-    ./ax-shell.nix
+    # ./ax-shell.nix
   ];
 }

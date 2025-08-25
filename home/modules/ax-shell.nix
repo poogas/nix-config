@@ -1,5 +1,7 @@
 { pkgs, ... }:
 
 {
-  programs.ax-shell.enable = true;
+  programs.ax-shell = {
+    enable = true;
+  };
 }

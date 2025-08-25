@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./overlays
     ./core
     ./hardware
     ./desktop

@@ -3,30 +3,13 @@
 {
   home.packages = with pkgs; [
     # --- Утилиты Hyprland / Wayland (перенесены из system) ---
-    brightnessctl
-    # cava
-    cliphist
-    # gpu-screen-recorder-gtk
-    # hyprpicker
-    hyprshot
-    # hyprsunset
     hyprlock 
     libnotify 
     wofi
     mako
-    grim
-    slurp
-    # matugen
-    # grimblast
-    # nvtopPackages.nvidia
-    playerctl
-    swappy
-    swww
-    wl-clipboard
-    # wlinhibit
 
     # --- Основные утилиты командной строки ---
-    unzip  # <--- ИСПРАВЛЕНО: убран .override
+    unzip
     zip
     xz
     p7zip
@@ -47,8 +30,6 @@
     # --- Инструменты для разработки и мониторинга ---
     neovim
     tmux
-    # imagemagick
-    # tesseract
     nix-output-monitor
     hugo
     glow
@@ -82,6 +63,5 @@
     cowsay
 
     pavucontrol
-    blueman
   ];
 }

@@ -11,6 +11,7 @@
         kb_options = "grp:alt_shift_toggle";
         follow_mouse = 1;
       };
+      monitor = ",3440x1440@165.00Hz,auto,auto";
       general = {
         gaps_in = 5;
         gaps_out = 20;

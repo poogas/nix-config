@@ -58,6 +58,7 @@
     # --- Приложения с GUI ---
     firefox
     telegram-desktop
+    discord
 
     # --- Разное ---
     cowsay

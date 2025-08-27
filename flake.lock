@@ -44,11 +44,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1756317829,
-        "narHash": "sha256-Yo8S11aKlsGq4gx7L+x/xFSeYh4PWynjLeFbGe4oLrg=",
+        "lastModified": 1756319380,
+        "narHash": "sha256-2Rpb+QM4nF1ZVeHbn6nxpTvGGYcP5twiREqE77URCwM=",
         "owner": "poogas",
         "repo": "Ax-Shell",
-        "rev": "c92b2d233cda8b9339bec279f3f02e71c69d51d1",
+        "rev": "c9c95a5a510f067b7b1609d654d41356b1381dcb",
         "type": "github"
       },
       "original": {

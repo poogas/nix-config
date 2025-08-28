@@ -2,12 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    # --- Утилиты Hyprland / Wayland (перенесены из system) ---
-    hyprlock 
-    libnotify 
-    wofi
-    mako
-
     # --- Основные утилиты командной строки ---
     unzip
     zip
@@ -29,7 +23,6 @@
 
     # --- Инструменты для разработки и мониторинга ---
     neovim
-    tmux
     nix-output-monitor
     hugo
     glow

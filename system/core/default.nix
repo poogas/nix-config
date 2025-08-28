@@ -7,7 +7,6 @@
     ./localization.nix
     ./users.nix
     ./hosts.nix
-    ./packages.nix
     ./pipewire.nix
     ./security.nix
     ./zapret.nix

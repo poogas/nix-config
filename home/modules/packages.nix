@@ -27,7 +27,7 @@
     hugo
     glow
     btop
-    iotop
+    # iotop
     iftop
     strace
     ltrace

@@ -62,7 +62,5 @@
 
     # --- Разное ---
     cowsay
-
-    pavucontrol
   ];
 }

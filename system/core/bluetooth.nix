@@ -1,12 +1,14 @@
-{ pkgs, ... }:
-
 {
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
-  };
 
-  environment.systemPackages = with pkgs; [
-    bluez-tools
-  ];
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+        Experimental = true;
+        FastConnectable = true;
+      };
+    };
+  };
 }

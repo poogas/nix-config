@@ -14,7 +14,6 @@
 
     users."${username}" = {
       imports = [
-        inputs.ax-shell.homeManagerModules.default
         ../../home/home.nix
       ];
     };

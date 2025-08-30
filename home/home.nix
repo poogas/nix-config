@@ -1,7 +1,8 @@
-{ username, stateVersion, ... }:
+{ username, stateVersion, inputs, ... }:
 
 {
   imports = [
+    inputs.ax-shell.homeManagerModules.default
     ./modules
   ];
 

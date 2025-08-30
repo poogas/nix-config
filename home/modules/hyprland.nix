@@ -35,15 +35,14 @@
         force_default_wallpaper = 0; 
       };
       "$mainMod" = "SUPER";
-      bind = [
-        "$mainMod, Q, exec, alacritty"
+      bind = config.programs.ax-shell.hyprlandBinds ++ [
+        # "$mainMod, Q, exec, alacritty"
         "$mainMod, C, killactive,"
-        "$mainMod, M, exit,"
-        "$mainMod, E, exec, dolphin"
-        "$mainMod, V, togglefloating,"
-        "$mainMod, R, exec, wofi --show drun"
-        "$mainMod, P, pseudo,"
-        "$mainMod, J, togglesplit,"
+        # "$mainMod, M, exit,"
+        # "$mainMod, E, exec, dolphin"
+        # "$mainMod, V, togglefloating,"
+        # "$mainMod, P, pseudo,"
+        # "$mainMod, J, togglesplit,"
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
@@ -55,7 +54,7 @@
         "$mainMod SHIFT, 2, movetoworkspace, 2"
         "$mainMod SHIFT, 3, movetoworkspace, 3"
       ];
-      exec-once = [
+      exec-once = config.programs.ax-shell.hyprlandExecOnce ++ [
       ];
     };
   };

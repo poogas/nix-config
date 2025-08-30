@@ -1,8 +1,6 @@
-# /etc/nixos/home-manager/modules/hyprlock.nix
 { ... }:
 
 {
-  # Создаем файл конфигурации для hyprlock
   home.file.".config/hypr/hyprlock.conf".text = ''
     background {
         path = screenshot

@@ -52,6 +52,7 @@
     firefox
     telegram-desktop
     discord
+    steam
 
     # --- Разное ---
     cowsay

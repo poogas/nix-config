@@ -34,6 +34,9 @@
         disable_hyprland_logo = true;
         force_default_wallpaper = 0; 
       };
+      windowrulev2 = [
+        "tile, class:^(steam_app_.*)$"
+      ];
       "$mainMod" = "SUPER";
       bind = config.programs.ax-shell.hyprlandBinds ++ [
         # "$mainMod, Q, exec, alacritty"

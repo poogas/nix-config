@@ -29,6 +29,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    awakened-poe-trade = {
+      url = "github:poogas/awakened-poe-trade-flake";
+    };
+
   };
 
   # --- Выходы (Outputs) ---
@@ -36,7 +40,7 @@
   # В нашем случае, он производит конфигурации операционных систем.
   # Функция `{ self, nixpkgs, ... }@inputs:` принимает все наши 'входы' в качестве аргументов.
   # `@inputs` — это трюк, который позволяет собрать все входы в одну переменную `inputs`.
-  outputs = { self, nixpkgs, home-manager, ax-shell, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     # Блок `let...in` позволяет нам определить локальные переменные, которые мы будем
     # использовать ниже. Это помогает сделать код более чистым.
     let

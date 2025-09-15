@@ -8,6 +8,6 @@
     ./hypridle.nix
     ./hyprlock.nix
     ./ax-shell.nix
-    ./awakened-poe-trade.nix
+    # ./awakened-poe-trade.nix
   ];
 }

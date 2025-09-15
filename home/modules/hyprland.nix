@@ -35,7 +35,9 @@
         force_default_wallpaper = 0; 
       };
       windowrulev2 = [
-        "tile, class:^(steam_app_.*)$"
+        "content game, class:^(steam_app_.*)$"
+        "immediate, class:^(steam_app_.*)$"
+        "tile, xwayland:1"
       ];
       "$mainMod" = "SUPER";
       bind = config.programs.ax-shell.hyprlandBinds ++ [

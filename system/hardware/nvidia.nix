@@ -19,6 +19,7 @@
       libvdpau
       libva
       vdpauinfo
+      nvidia-vaapi-driver
     ];
   };
 }

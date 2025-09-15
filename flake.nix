@@ -33,6 +33,12 @@
       url = "github:poogas/awakened-poe-trade-flake";
     };
 
+    play-nix.url = "github:TophC7/play.nix";
+
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    };
+
   };
 
   # --- Выходы (Outputs) ---

@@ -10,5 +10,6 @@
     ./pipewire.nix
     ./security.nix
     ./zapret.nix
+    ./packages.nix
   ];
 }

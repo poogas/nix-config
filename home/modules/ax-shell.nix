@@ -16,7 +16,7 @@
     settings = {
 
       # --- Общие настройки ---
-      terminalCommand = "kitty -e"; # Команда для запуска терминала
+      terminalCommand = "alacritty -e"; # Какой терминал использовать для tmux
       datetime12hFormat = false;   # Использовать 12-часовой формат времени (true/false)
       cornersVisible = true;       # Показывать декоративные закругленные углы по краям экрана
 

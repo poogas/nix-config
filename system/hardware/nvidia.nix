@@ -8,7 +8,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     modesetting.enable = true;
     nvidiaSettings = false;
-    powerManagement.enable = false;
+    powerManagement.enable = true;
   };
 
   hardware.graphics = {

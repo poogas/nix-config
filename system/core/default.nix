@@ -9,6 +9,7 @@
     ./hosts.nix
     ./pipewire.nix
     ./security.nix
+    ./zswap.nix
     ./zapret.nix
     ./packages.nix
   ];

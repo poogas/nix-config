@@ -14,26 +14,41 @@
       };
       monitor = ",3440x1440@165.00Hz,auto,auto";
       general = {
-        gaps_in = 5;
-        gaps_out = 20;
-        border_size = 2;
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
+        gaps_in = 2;
+        gaps_out = 4;
+        border_size = 2;
         layout = "dwindle";
       };
+      cursor = {
+        no_warps = true;
+      };
       decoration = {
-        rounding = 10;
+        rounding = 14;
         blur = {
           enabled = true;
-          size = 3;
-          passes = 1;
+          size = 1;
+          passes = 3;
+          new_optimizations = true;
+          contrast = 1;
+          brightness = 1;
+        };
+        shadow = {
+          enabled = true;
+          range = 10;
+          render_power = 2;
+          color = "rgba(0, 0, 0, 0.25)";
         };
       };
       animations.enabled = true;
       misc = {
         disable_hyprland_logo = true;
-        force_default_wallpaper = 0; 
+        force_default_wallpaper = 0;
       };
+      layerrule = [
+        "noanim, fabric"
+      ];
       windowrulev2 = [
         "content game, class:^(steam_app_.*)$"
         "immediate, class:^(steam_app_.*)$"
@@ -41,13 +56,8 @@
       ];
       "$mainMod" = "SUPER";
       bind = config.programs.ax-shell.hyprlandBinds ++ [
-        # "$mainMod, Q, exec, alacritty"
+        "$mainMod, return, exec, alacritty"
         "$mainMod, C, killactive,"
-        # "$mainMod, M, exit,"
-        # "$mainMod, E, exec, dolphin"
-        # "$mainMod, V, togglefloating,"
-        # "$mainMod, P, pseudo,"
-        # "$mainMod, J, togglesplit,"
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"

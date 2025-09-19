@@ -29,10 +29,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    awakened-poe-trade = {
-      url = "github:poogas/awakened-poe-trade-flake";
-    };
-
     play-nix.url = "github:TophC7/play.nix";
 
     chaotic = {

@@ -3,7 +3,6 @@
 {
   imports = [
     inputs.ax-shell.homeManagerModules.default
-    inputs.awakened-poe-trade.homeManagerModules.default
     ./modules
   ];
 

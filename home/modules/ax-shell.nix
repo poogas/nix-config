@@ -51,9 +51,9 @@
           sysprofiles = true;
           button_overview = false;
           ws_container = true;
-          weather = true;
+          weather = false;
           battery = true;
-          metrics = true;
+          metrics = false;
           language = true;
           date_time = true;
           button_power = true;

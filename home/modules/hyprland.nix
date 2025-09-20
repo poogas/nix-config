@@ -1,9 +1,30 @@
 { pkgs, config, ... }:
 
+let
+  axShellSettings = config.programs.ax-shell.settings;
+
+  animation_type =
+    if builtins.elem axShellSettings.bar.position [ "Left" "Right" ]
+    then "slidefadevert"
+    else "slidefade";
+in
 {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
+
+    extraConfig = ''
+      source = ${config.xdg.configHome}/ax-shell/config/hypr/colors.conf
+
+      general {
+        col.active_border = rgb($primary)
+        col.inactive_border = rgb($surface)
+        gaps_in = 2
+        gaps_out = 4
+        border_size = 2
+        layout = dwindle
+      }
+    '';
 
     settings = {
       env = "XCURSOR_SIZE,24";
@@ -13,14 +34,6 @@
         follow_mouse = 1;
       };
       monitor = ",3440x1440@165.00Hz,auto,auto";
-      general = {
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
-        gaps_in = 2;
-        gaps_out = 4;
-        border_size = 2;
-        layout = "dwindle";
-      };
       cursor = {
         no_warps = true;
       };
@@ -41,7 +54,16 @@
           color = "rgba(0, 0, 0, 0.25)";
         };
       };
-      animations.enabled = true;
+      animations = {
+        enabled = true;
+        bezier = "myBezier, 0.4, 0.0, 0.2, 1.0";
+        animation = [
+          "windows, 1, 2.5, myBezier, popin 80%"
+          "border, 1, 2.5, myBezier"
+          "fade, 1, 2.5, myBezier"
+          "workspaces, 1, 2.5, myBezier, ${animation_type} 20%"
+        ];
+      };
       misc = {
         disable_hyprland_logo = true;
         force_default_wallpaper = 0;

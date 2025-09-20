@@ -25,7 +25,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
 
     ax-shell = {
-      url = "github:poogas/Ax-Shell";
+      url = "github:poogas/Ax-Shell/dev";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

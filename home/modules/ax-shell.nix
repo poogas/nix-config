@@ -5,6 +5,17 @@
     # --- ГЛАВНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ---
     enable = true;
 
+    matugen.extraSettings = {
+      config.wallpaper = {
+        # arguments = [ "img" "-t" "fade" "--transition-duration" "1.2" "--transition-step" "255" "--transition-fps" "165" "-f" "Lanczos3" ];
+        # arguments = [ "img" "-t" "wipe" "--transition-duration" "0.5" "--transition-angle" "45" "--transition-fps" "165" "-f" "Lanczos3" ];
+        arguments = [ "img" "-t" "grow" "--transition-duration" "1.2" "--transition-pos" "center" "--transition-fps" "165" "-f" "Lanczos3" ];
+        # arguments = [ "img" "-t" "wave" "--transition-duration" "1.5" "--transition-angle" "0" "--transition-fps" "165" "-f" "Lanczos3" ];
+        # arguments = [ "img" "-t" "wipe" "--transition-duration" "0.8" "--transition-angle" "90" "--transition-fps" "165" "-f" "Lanczos3" ];
+        # arguments = [ "img" "-t" "outer" "--transition-duration" "2.0" "--transition-step" "100" "--transition-fps" "165" "-f" "Lanczos3" ];
+      };
+    };
+
     # # --- НАСТРОЙКИ ВЕРХНЕГО УРОВНЯ ---
     # autostart = {
     #   enable = true; # Автоматически запускать Ax-Shell вместе с Hyprland

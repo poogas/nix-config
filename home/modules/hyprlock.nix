@@ -1,36 +1,98 @@
-{ ... }:
+{ pkgs, config, lib, username, ... }:
 
-{
-  home.file.".config/hypr/hyprlock.conf".text = ''
+let
+  hyprlockConfig = pkgs.writeText "hyprlock.conf" ''
+    # Указываем hyprlock, где брать переменные цветов ($primary, $foreground и т.д.)
+    source = ${config.xdg.configHome}/ax-shell/config/hypr/colors.conf
+
+    # --- Секция BACKGROUND ---
     background {
-        path = screenshot
+        monitor =
+        path = ${config.xdg.configHome}/ax-shell/current.wall
         blur_passes = 3
-        blur_size = 8
+        blur_size = 3
+        contrast = 1.0
+        brightness = 0.5
+        vibrancy = 0.0
+        vibrancy_darkness = 0.0
     }
 
+    # --- Секция GENERAL ---
+    general {
+        hide_cursor = true
+    }
+
+    # --- Секция INPUT FIELD ---
     input-field {
         monitor =
-        size = 250, 60
-        outline_thickness = 2
-        dots_size = 0.2 # Scale of input-field dots
-        dots_spacing = 0.2 # Spacing between dots
+        size = 256, 48
+        outline_thickness = 0
+        dots_size = 0.2
+        dots_spacing = 0.5
         dots_center = true
+        outer_color = rgba(00000000)
+        inner_color = rgba(0, 0, 0, 1)
+        font_color = rgb($foreground)
+        fail_color = rgb($error)
+        check_color = rgb($tertiary)
+        capslock_color = rgb($secondary)
         fade_on_empty = false
-        font_color = rgb(202, 211, 245)
-        inner_color = rgb(30, 30, 46)
-        outer_color = rgb(137, 180, 250)
-        rounding = -1
-        placeholder_text = <i>Password...</i>
+        font_family = Iosevka Nerd Font
+        placeholder_text = "..."
+        hide_input = false
+        position = 0, -100
+        halign = center
+        valign = center
+        shadow_passes = 1
+        shadow_size = 5
+        shadow_boost = 0.5
     }
 
+    # --- Секция TIME ---
     label {
         monitor =
-        text = cmd[update:1000] echo "<b><big> $(date +"%H:%M") </big></b>"
-        color = rgba(255, 255, 255, 0.8)
-        font_size = 90
-        position = 0, 200
+        text = cmd[update:1000] echo "$(date +"%H:%M:%S")"
+        color = rgb($foreground)
+        font_size = 14
+        font_family = Iosevka Nerd Font Bold
+        position = 0, -150
         halign = center
-        valign = top
+        valign = center
+        shadow_passes = 1
+        shadow_size = 5
+        shadow_boost = 0.5
+    }
+
+    # --- Секция USER ---
+    label {
+        monitor =
+        text = ${username}
+        color = rgb($foreground)
+        font_size = 14
+        font_family = Iosevka Nerd Font Bold Italic
+        position = 0, -50
+        halign = center
+        valign = center
+        shadow_passes = 1
+        shadow_size = 5
+        shadow_boost = 0.5
+    }
+
+    # --- Секция PICTURE ---
+    image {
+        path = ${config.xdg.configHome}/ax-shell/face.icon
+        size = 200
+        position = 0, 75
+        halign = center
+        valign = center
+        border_size = 3
+        border_color = rgb($primary)
+        shadow_passes = 1
+        shadow_size = 5
+        shadow_boost = 0.5
     }
   '';
+in
+{
+  home.file.".config/hypr/hyprlock.conf".source = hyprlockConfig;
 }

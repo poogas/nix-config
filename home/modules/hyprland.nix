@@ -27,7 +27,6 @@ in
     '';
 
     settings = {
-      env = "XCURSOR_SIZE,24";
       input = {
         kb_layout = "us,ru";
         kb_options = "grp:alt_shift_toggle";

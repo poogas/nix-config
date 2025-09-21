@@ -31,6 +31,12 @@
       datetime12hFormat = false;   # Использовать 12-часовой формат времени (true/false)
       cornersVisible = true;       # Показывать декоративные закругленные углы по краям экрана
 
+      cursor = {
+        theme = "Bibata-Modern-Ice"; # Название темы
+        size = 30;                     # Размер
+        package = pkgs.oreo-cursors-plus; # Пакет, предоставляющий тему
+      };
+
       # # --- Обои и иконка профиля ---
       # wallpapersDir = "/home/qwerty/Pictures/Wallpapers"; # Путь к вашей папке с обоями
       # defaultWallpaper = /home/qwerty/Pictures/Wallpapers/default.jpg; # Путь к обоям по умолчанию

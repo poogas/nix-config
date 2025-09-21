@@ -12,5 +12,6 @@
     ./zswap.nix
     ./zapret.nix
     ./packages.nix
+    ./fonts.nix
   ];
 }

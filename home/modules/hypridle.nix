@@ -1,4 +1,3 @@
-# /etc/nixos/home-manager/modules/hypridle.nix
 { pkgs, ... }:
 
 {
@@ -6,21 +5,29 @@
     enable = true;
     settings = {
       general = {
-        # Теперь просто вызываем hyprlock
-        lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
-        before_sleep_cmd = "${pkgs.hyprlock}/bin/hyprlock";
-        after_sleep_cmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+        lock_cmd = "hyprlock";
+        before_sleep_cmd = "loginctl lock-session";
+        after_sleep_cmd = "hyprctl dispatch dpms on";
       };
 
       listener = [
         {
-          timeout = 300;
-          on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
+          timeout = 150;
+          on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl -s set 10";
+          on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -r";
         }
         {
-          timeout = 600;
-          on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-          on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+          timeout = 300;
+          on-timeout = "loginctl lock-session";
+        }
+        {
+          timeout = 330;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+        {
+          timeout = 1800;
+          on-timeout = "systemctl suspend";
         }
       ];
     };

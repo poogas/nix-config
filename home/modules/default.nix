@@ -1,5 +1,6 @@
 {
   imports = [
+    ./xdg.nix
     ./alacritty.nix
     ./git.nix
     ./hyprland.nix

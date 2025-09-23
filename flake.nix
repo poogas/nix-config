@@ -35,6 +35,10 @@
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     };
 
+    nixos-ddcci-nvidia = {
+      url = "github:poogas/nixos-ddcci-nvidia";
+    };
+
   };
 
   # --- Выходы (Outputs) ---

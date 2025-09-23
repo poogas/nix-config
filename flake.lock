@@ -729,11 +729,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1758662751,
-        "narHash": "sha256-2uZztfKRlv7DbusFT1xeMMTRmueABtkMMl4R15b484I=",
+        "lastModified": 1758664919,
+        "narHash": "sha256-lte8ZqE/KFidT2pSfmlrdM+sGwnD3cblE8/2qoHx16U=",
         "owner": "poogas",
         "repo": "nixos-ddcci-nvidia",
-        "rev": "89f15d0c9a79a2700eb27f32cd69d84d01f19a24",
+        "rev": "9b4899549f593a407ec44b1ce84b27f80e404c04",
         "type": "github"
       },
       "original": {

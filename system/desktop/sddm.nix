@@ -1,9 +1,15 @@
-# /etc/nixos/system/desktop/sddm.nix
 { ... }:
 
 {
+  services.displayManager = {
+    autoLogin.enable = true;
+    autoLogin.user = "qwerty";
+
+    defaultSession = "hyprland-uwsm";
+  };
+
   services.displayManager.sddm = {
     enable = true;
-    wayland.enable = true; # Запускаем SDDM под Wayland
+    wayland.enable = true;
   };
 }

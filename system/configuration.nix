@@ -6,6 +6,7 @@
     ./core
     ./hardware
     ./desktop
+    ./packages.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

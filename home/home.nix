@@ -4,6 +4,7 @@
   imports = [
     inputs.ax-shell.homeManagerModules.default
     ./modules
+    ./packages.nix
   ];
 
   home.username = username;

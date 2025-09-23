@@ -4,5 +4,6 @@
     ./nvidia.nix
     ./all-firmware.nix
     ./kernel.nix
+    ./ddcci.nix
   ];
 }

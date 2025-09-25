@@ -74,6 +74,7 @@ in
         "content game, class:^(steam_app_.*)$"
         "immediate, class:^(steam_app_.*)$"
         "tile, xwayland:1"
+	"opacity 0.95 0.90, class:^(Alacritty)$"
       ];
       "$mainMod" = "SUPER";
       bind = config.programs.ax-shell.hyprlandBinds ++ [

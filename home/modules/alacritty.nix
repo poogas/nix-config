@@ -9,6 +9,11 @@
           "${config.xdg.configHome}/alacritty/matugen_colors.toml"
         ];
       };
+      colors = {
+        primary = {
+          background = "#000000"; 
+        };
+      };
       terminal = {
         shell = {
           program = "${pkgs.fish}/bin/fish";

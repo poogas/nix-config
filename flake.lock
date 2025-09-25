@@ -677,6 +677,22 @@
         "type": "github"
       }
     },
+    "matugen-themes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1753454165,
+        "narHash": "sha256-tQ6AN35w+GMGtRrb5JqTb1vnriqlL6ax8fS9z44mSkY=",
+        "owner": "InioX",
+        "repo": "matugen-themes",
+        "rev": "b797e90c6ddef55f8086ca15a030a7dcc314ae6a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "InioX",
+        "repo": "matugen-themes",
+        "type": "github"
+      }
+    },
     "nix-github-actions": {
       "inputs": {
         "nixpkgs": [
@@ -888,6 +904,7 @@
         "chaotic": "chaotic",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
+        "matugen-themes": "matugen-themes",
         "nixos-ddcci-nvidia": "nixos-ddcci-nvidia",
         "nixpkgs": "nixpkgs_4",
         "play-nix": "play-nix"

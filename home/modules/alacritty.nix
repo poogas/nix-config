@@ -1,9 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.alacritty = {
     enable = true;
     settings = {
+      general = {
+        import = [
+          "${config.xdg.configHome}/alacritty/matugen_colors.toml"
+        ];
+      };
       terminal = {
         shell = {
           program = "${pkgs.fish}/bin/fish";

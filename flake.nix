@@ -39,6 +39,11 @@
       url = "github:poogas/nixos-ddcci-nvidia";
     };
 
+    matugen-themes = {
+      url = "github:InioX/matugen-themes";
+      flake = false;
+    };
+
   };
 
   # --- Выходы (Outputs) ---

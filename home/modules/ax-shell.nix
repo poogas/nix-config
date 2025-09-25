@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, config, ... }:
 
 {
   programs.ax-shell = {
@@ -13,6 +13,20 @@
         # arguments = [ "img" "-t" "wave" "--transition-duration" "1.5" "--transition-angle" "0" "--transition-fps" "165" "-f" "Lanczos3" ];
         # arguments = [ "img" "-t" "wipe" "--transition-duration" "0.8" "--transition-angle" "90" "--transition-fps" "165" "-f" "Lanczos3" ];
         # arguments = [ "img" "-t" "outer" "--transition-duration" "2.0" "--transition-step" "100" "--transition-fps" "165" "-f" "Lanczos3" ];
+      };
+      templates = {
+        "alacritty" = {
+          input_path = "${inputs.matugen-themes}/templates/alacritty.toml";
+          output_path = "${config.xdg.configHome}/alacritty/matugen_colors.toml";
+        };
+        # "gtk3" = {
+        #   input_path = "${inputs.matugen-themes}/templates/gtk-colors.css";
+        #   output_path = "${config.xdg.configHome}/gtk-3.0/gtk.css";
+        # };
+        # "gtk4" = {
+        #   input_path = "${inputs.matugen-themes}/templates/gtk-colors.css";
+        #   output_path = "${config.xdg.configHome}/gtk-4.0/gtk.css";
+        # };
       };
     };
 

@@ -1,9 +1,9 @@
-{ ... }:
+{ username, ... }:
 
 {
   services.displayManager = {
     autoLogin.enable = true;
-    autoLogin.user = "qwerty";
+    autoLogin.user = username;
 
     defaultSession = "hyprland-uwsm";
   };

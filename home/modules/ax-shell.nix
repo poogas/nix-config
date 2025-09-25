@@ -42,6 +42,14 @@
       # defaultWallpaper = /home/qwerty/Pictures/Wallpapers/default.jpg; # Путь к обоям по умолчанию
       # defaultFaceIcon = /home/qwerty/Pictures/avatar.png; # ПУТЬ К ВАШЕЙ ЛИЧНОЙ ИКОНКЕ
 
+      dashboard.components = {
+        widgets = true;    # Показать виджеты
+        pins = false;      # Показать закрепленные приложения
+        kanban = false;    # Скрыть канбан-доску
+        wallpapers = true; # Показать управление обоями
+        mixer = false;     # Скрыть микшер
+      };
+
       # --- Настройки Бара (верхней панели) ---
       bar = {
         position = "Top"; # "Top", "Bottom", "Left", "Right"

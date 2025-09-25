@@ -76,7 +76,6 @@
           sysprofiles = true;
           button_overview = false;
           ws_container = true;
-          weather = false;
           battery = true;
           metrics = false;
           language = true;

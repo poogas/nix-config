@@ -1,11 +1,47 @@
+{ pkgs, ... }:
+
 {
   programs.alacritty = {
     enable = true;
     settings = {
+      terminal = {
+        shell = {
+          program = "${pkgs.fish}/bin/fish";
+          args = [ "-l" ];
+        };
+      };
       env.TERM = "xterm-256color";
-      font = { size = 12; draw_bold_text_with_bright_colors = true; };
+      font = {
+        normal = {
+          family = "UbuntuMono Nerd Font Mono";
+          style = "Regular";
+        };
+        size = 16;
+      };
+      window = {
+        padding = {
+          x = 10;
+          y = 10;
+        };
+	dynamic_padding = true;
+      };
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
+      keyboard = {
+        bindings = [
+          { key = "V"; mods = "Control"; action = "Paste"; }
+        ];
+      };
+      cursor = {
+        style = {
+          shape = "Underline";
+          blinking = "On";
+        };
+        vi_mode_style = {
+          shape = "Underline";
+          blinking = "On";
+        };
+      };
     };
   };
 }

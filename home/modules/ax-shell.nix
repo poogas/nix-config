@@ -45,9 +45,9 @@
       dashboard.components = {
         widgets = true;    # Показать виджеты
         pins = false;      # Показать закрепленные приложения
-        kanban = false;    # Скрыть канбан-доску
+        kanban = true;    # Скрыть канбан-доску
         wallpapers = true; # Показать управление обоями
-        mixer = false;     # Скрыть микшер
+        mixer = true;     # Скрыть микшер
       };
 
       # --- Настройки Бара (верхней панели) ---

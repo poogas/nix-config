@@ -49,7 +49,6 @@
     ipcalc
 
     # --- Приложения с GUI ---
-    firefox
     telegram-desktop
     discord
 

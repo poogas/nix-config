@@ -51,6 +51,7 @@
     # --- Приложения с GUI ---
     telegram-desktop
     discord
+    loupe
 
     # --- Разное ---
     cowsay

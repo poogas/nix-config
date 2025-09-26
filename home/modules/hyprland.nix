@@ -39,13 +39,12 @@ in
       decoration = {
         rounding = 14;
         blur = {
-          enabled = true;
-          size = 4;          # Увеличили размер для заметного эффекта
-          passes = 4;        # Увеличили количество проходов для качества
+          enabled = false;
+          size = 1;
+          passes = 3;
           new_optimizations = true;
-          noise = 0.02;      # Добавили легкий шум
-          contrast = 0.9;    # Немного уменьшили контраст для мягкости
-          brightness = 1.0;  # Яркость оставим как есть
+          contrast = 1;
+          brightness = 1;
         };
         shadow = {
           enabled = true;
@@ -70,14 +69,13 @@ in
       };
       layerrule = [
         "noanim, fabric"
-	"blur, zen-beta"
       ];
       windowrulev2 = [
         "content game, class:^(steam_app_.*)$"
         "immediate, class:^(steam_app_.*)$"
         "tile, xwayland:1"
-	"opacity 0.95 0.90, class:^(Alacritty)$"
-	# "opacity 0.95 0.90, class:^(zen-beta)$"
+        "opacity 0.95 0.90, class:^(Alacritty)$"
+        "opacity 1 0.90, class:^(zen-beta)$"
       ];
       "$mainMod" = "SUPER";
       bind = config.programs.ax-shell.hyprlandBinds ++ [

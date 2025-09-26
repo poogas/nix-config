@@ -13,6 +13,7 @@
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "zen.welcome-screen.seen" = true;
         "zen.view.window.scheme" = 0;
+	"zen.widget.linux.transparency" = true;
       };
 
       userChrome = ''
@@ -33,8 +34,7 @@
               green = 0;
               blue = 0;
             }];
-            opacity = 1.0;
-            texture = 0.0;
+            opacity = 0.95;
           };
         };
       };

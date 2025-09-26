@@ -9,5 +9,6 @@
     ./hyprlock.nix
     ./ax-shell.nix
     ./fish.nix
+    ./zen-browser.nix
   ];
 }

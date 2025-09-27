@@ -34,6 +34,7 @@
         "uBlock0@raymondhill.net" = "ublock-origin";
         "{74145f27-f039-47ce-a470-a662b129930a}" = "clearurls";
         "jid1-BoFifL9Vbdl2zQ@jetpack" = "decentraleyes";
+	"sponsorBlocker@ajay.app" = "sponsorblock";
       };
     };
 
@@ -43,6 +44,14 @@
         "zen.welcome-screen.seen" = true;
         "zen.view.window.scheme" = 0;
 	"zen.widget.linux.transparency" = true;
+	#
+	"zen.theme.color-prefs.amoled" = true;
+	"zen.theme.essentials-favicon-bg" = true;
+	"zen.themes.disable-all" = false;
+	"zen.urlbar.behavior" = "float";
+	"zen.view.compact.hide-toolbar" = true;
+	"zen.view.grey-out-inactive-windows" = false;
+	"zen.workspaces.natural-scroll" = true;
       };
 
       userChrome = ''

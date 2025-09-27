@@ -1,6 +1,10 @@
 { pkgs, inputs, config, ... }:
 
 {
+  imports = [
+    inputs.ax-shell.homeManagerModules.default
+  ];
+
   programs.ax-shell = {
     # --- ГЛАВНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ---
     enable = true;

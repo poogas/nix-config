@@ -2,8 +2,6 @@
 
 {
   imports = [
-    inputs.ax-shell.homeManagerModules.default
-    # inputs.zen-browser.homeModules.beta
     ./modules
     ./packages.nix
   ];

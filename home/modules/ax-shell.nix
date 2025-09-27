@@ -56,9 +56,9 @@
       };
 
       # # --- Обои и иконка профиля ---
-      # wallpapersDir = "/home/qwerty/Pictures/Wallpapers"; # Путь к вашей папке с обоями
+      wallpapersDir = "${config.xdg.configHome}/nix-config/home/assets/Wallpapers"; # Путь к вашей папке с обоями
       # defaultWallpaper = /home/qwerty/Pictures/Wallpapers/default.jpg; # Путь к обоям по умолчанию
-      # defaultFaceIcon = /home/qwerty/Pictures/avatar.png; # ПУТЬ К ВАШЕЙ ЛИЧНОЙ ИКОНКЕ
+      defaultFaceIcon = ../assets/avatar.png;
 
       dashboard.components = {
         widgets = true;    # Показать виджеты

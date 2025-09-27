@@ -49,6 +49,10 @@
         [data-l10n-id="zen-workspaces-change-theme"] {
           display: none !important;
         }
+
+        #statuspanel {
+          display: none !important;
+        }
       '';
 
       spacesForce = true;

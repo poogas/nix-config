@@ -44,14 +44,7 @@
         "zen.welcome-screen.seen" = true;
         "zen.view.window.scheme" = 0;
 	"zen.widget.linux.transparency" = true;
-	#
-	"zen.theme.color-prefs.amoled" = true;
-	"zen.theme.essentials-favicon-bg" = true;
-	"zen.themes.disable-all" = false;
-	"zen.urlbar.behavior" = "float";
-	"zen.view.compact.hide-toolbar" = true;
-	"zen.view.grey-out-inactive-windows" = false;
-	"zen.workspaces.natural-scroll" = true;
+	"browser.translations.automaticallyPopup" = false;
       };
 
       userChrome = ''

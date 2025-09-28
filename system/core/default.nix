@@ -13,5 +13,6 @@
     ./zapret.nix
     ./fonts.nix
     ./gpu-screen-recorder.nix
+    ./shells.nix
   ];
 }

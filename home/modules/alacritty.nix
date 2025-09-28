@@ -14,12 +14,6 @@
           background = "#000000"; 
         };
       };
-      terminal = {
-        shell = {
-          program = "${pkgs.fish}/bin/fish";
-          args = [ "-l" ];
-        };
-      };
       env.TERM = "xterm-256color";
       font = {
         normal = {

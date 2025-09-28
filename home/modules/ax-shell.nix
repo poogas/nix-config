@@ -18,9 +18,9 @@ let
   panelTheme = "Notch"; # "Notch", "Panel"
 
   # --- Пути к обоям и иконке профиля ---
-  wallpapersPath = "${config.xdg.configHome}/nix-config/home/assets/Wallpapers";
-  # defaultWallpaper = /home/qwerty/Pictures/Wallpapers/default.jpg;
-  faceIconPath = ../../home/assets/avatar.png;
+  wallpapersPath = "${../../home/assets/Wallpapers}";
+  defaultWallpaper = "${../../home/assets/Wallpapers/example-1.jpg}";
+  faceIconPath = "${../../home/assets/avatar.png}";
 
   # --- Горячие клавиши ---
   keybinds = {
@@ -97,7 +97,7 @@ in
 
       # --- Обои и иконка профиля ---
       wallpapersDir = wallpapersPath; # Путь к вашей папке с обоями
-      # defaultWallpaper = /home/qwerty/Pictures/Wallpapers/default.jpg; # Путь к обоям по умолчанию
+      defaultWallpaper = defaultWallpaper; # Путь к обоям по умолчанию
       defaultFaceIcon = faceIconPath;
 
       dashboard.components = {

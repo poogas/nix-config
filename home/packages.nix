@@ -28,7 +28,6 @@
     hugo
     glow
     btop
-    # iotop
     iftop
     strace
     ltrace
@@ -53,6 +52,7 @@
     telegram-desktop
     discord
     loupe
+    nautilus
 
     # --- Разное ---
     cowsay

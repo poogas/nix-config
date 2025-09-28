@@ -1,5 +1,50 @@
 { pkgs, inputs, config, ... }:
 
+let
+  # --- Варианты анимации смены обоев ---
+  wallpaperTransition = [ "img" "-t" "grow" "--transition-duration" "1.2" "--transition-pos" "center" "--transition-fps" "165" "-f" "Lanczos3" ];
+  # wallpaperTransition = [ "img" "-t" "fade" "--transition-duration" "1.2" "--transition-step" "255" "--transition-fps" "165" "-f" "Lanczos3" ];
+  # wallpaperTransition = [ "img" "-t" "wipe" "--transition-duration" "0.5" "--transition-angle" "45" "--transition-fps" "165" "-f" "Lanczos3" ];
+  # wallpaperTransition = [ "img" "-t" "wave" "--transition-duration" "1.5" "--transition-angle" "0" "--transition-fps" "165" "-f" "Lanczos3" ];
+  # wallpaperTransition = [ "img" "-t" "wipe" "--transition-duration" "0.8" "--transition-angle" "90" "--transition-fps" "165" "-f" "Lanczos3" ];
+  # wallpaperTransition = [ "img" "-t" "outer" "--transition-duration" "2.0" "--transition-step" "100" "--transition-fps" "165" "-f" "Lanczos3" ];
+
+  cursorTheme = "Bibata-Modern-Ice";
+  cursorSize = 30;
+  cursorPackage = pkgs.oreo-cursors-plus;
+
+  barTheme = "Pills";  # "Pills", "Dense", "Edge"
+  dockTheme = "Pills"; # "Pills", "Dense", "Edge"
+  panelTheme = "Notch"; # "Notch", "Panel"
+
+  # --- Пути к обоям и иконке профиля ---
+  wallpapersPath = "${config.xdg.configHome}/nix-config/home/assets/Wallpapers";
+  # defaultWallpaper = /home/qwerty/Pictures/Wallpapers/default.jpg;
+  faceIconPath = ../../home/assets/avatar.png;
+
+  # --- Горячие клавиши ---
+  keybinds = {
+    restart = { prefix = "SUPER ALT"; suffix = "B"; };
+    axmsg = { prefix = "SUPER"; suffix = "A"; };
+    dash = { prefix = "SUPER"; suffix = "D"; };
+    bluetooth = { prefix = "SUPER"; suffix = "B"; };
+    pins = { prefix = "SUPER"; suffix = "Q"; };
+    kanban = { prefix = "SUPER"; suffix = "N"; };
+    launcher = { prefix = "SUPER"; suffix = "R"; };
+    tmux = { prefix = "SUPER"; suffix = "T"; };
+    cliphist = { prefix = "SUPER"; suffix = "V"; };
+    toolbox = { prefix = "SUPER"; suffix = "S"; };
+    overview = { prefix = "SUPER"; suffix = "TAB"; };
+    wallpapers = { prefix = "SUPER"; suffix = "COMMA"; };
+    randwall = { prefix = "SUPER SHIFT"; suffix = "COMMA"; };
+    mixer = { prefix = "SUPER"; suffix = "M"; };
+    emoji = { prefix = "SUPER"; suffix = "PERIOD"; };
+    power = { prefix = "SUPER"; suffix = "ESCAPE"; };
+    caffeine = { prefix = "SUPER SHIFT"; suffix = "M"; };
+    restart_inspector = { prefix = "SUPER CTRL ALT"; suffix = "B"; };
+  };
+
+in
 {
   imports = [
     inputs.ax-shell.homeManagerModules.default
@@ -11,12 +56,7 @@
 
     matugen.extraSettings = {
       config.wallpaper = {
-        # arguments = [ "img" "-t" "fade" "--transition-duration" "1.2" "--transition-step" "255" "--transition-fps" "165" "-f" "Lanczos3" ];
-        # arguments = [ "img" "-t" "wipe" "--transition-duration" "0.5" "--transition-angle" "45" "--transition-fps" "165" "-f" "Lanczos3" ];
-        arguments = [ "img" "-t" "grow" "--transition-duration" "1.2" "--transition-pos" "center" "--transition-fps" "165" "-f" "Lanczos3" ];
-        # arguments = [ "img" "-t" "wave" "--transition-duration" "1.5" "--transition-angle" "0" "--transition-fps" "165" "-f" "Lanczos3" ];
-        # arguments = [ "img" "-t" "wipe" "--transition-duration" "0.8" "--transition-angle" "90" "--transition-fps" "165" "-f" "Lanczos3" ];
-        # arguments = [ "img" "-t" "outer" "--transition-duration" "2.0" "--transition-step" "100" "--transition-fps" "165" "-f" "Lanczos3" ];
+        arguments = wallpaperTransition;
       };
       templates = {
         "alacritty" = {
@@ -50,15 +90,15 @@
       cornersVisible = true;       # Показывать декоративные закругленные углы по краям экрана
 
       cursor = {
-        theme = "Bibata-Modern-Ice"; # Название темы
-        size = 30;                     # Размер
-        package = pkgs.oreo-cursors-plus; # Пакет, предоставляющий тему
+        theme = cursorTheme; # Название темы
+        size = cursorSize;   # Размер
+        package = cursorPackage; # Пакет, предоставляющий тему
       };
 
-      # # --- Обои и иконка профиля ---
-      wallpapersDir = "${config.xdg.configHome}/nix-config/home/assets/Wallpapers"; # Путь к вашей папке с обоями
+      # --- Обои и иконка профиля ---
+      wallpapersDir = wallpapersPath; # Путь к вашей папке с обоями
       # defaultWallpaper = /home/qwerty/Pictures/Wallpapers/default.jpg; # Путь к обоям по умолчанию
-      defaultFaceIcon = ../assets/avatar.png;
+      defaultFaceIcon = faceIconPath;
 
       dashboard.components = {
         widgets = true;    # Показать виджеты
@@ -72,8 +112,8 @@
       bar = {
         position = "Top"; # "Top", "Bottom", "Left", "Right"
         centered = false; # Центрировать виджеты на баре (true/false)
-        theme = "Pills";  # "Pills", "Dense", "Edge"
-        
+        theme = barTheme;
+
         workspace = {
           showNumber = false;         # Показывать номера рабочих столов (true/false)
           useChineseNumerals = false; # Использовать китайские цифры (true/false)
@@ -107,12 +147,12 @@
         enable = false;          # Включить док (true/false)
         alwaysOccluded = false; # Держать док всегда под окнами (true/false)
         iconSize = 28;         # Размер иконок в пикселях
-        theme = "Pills";       # "Pills", "Dense", "Edge"
+        theme = dockTheme;
       };
 
       # --- Настройки Панелей (Dashboard, Лаунчер и т.д.) ---
       panel = {
-        theme = "Notch";  # "Notch" (по центру сверху), "Panel" (сбоку)
+        theme = panelTheme;
         position = "Center"; # Позиция для темы "Panel": "Start", "Center", "End"
       };
 
@@ -141,27 +181,7 @@
         };
       };
 
-      # --- Настройки Горячих Клавиш ---
-      keybindings = {
-        restart = { prefix = "SUPER ALT"; suffix = "B"; };
-        axmsg = { prefix = "SUPER"; suffix = "A"; };
-        dash = { prefix = "SUPER"; suffix = "D"; };
-        bluetooth = { prefix = "SUPER"; suffix = "B"; };
-        pins = { prefix = "SUPER"; suffix = "Q"; };
-        kanban = { prefix = "SUPER"; suffix = "N"; };
-        launcher = { prefix = "SUPER"; suffix = "R"; };
-        tmux = { prefix = "SUPER"; suffix = "T"; };
-        cliphist = { prefix = "SUPER"; suffix = "V"; };
-        toolbox = { prefix = "SUPER"; suffix = "S"; };
-        overview = { prefix = "SUPER"; suffix = "TAB"; };
-        wallpapers = { prefix = "SUPER"; suffix = "COMMA"; };
-        randwall = { prefix = "SUPER SHIFT"; suffix = "COMMA"; };
-        mixer = { prefix = "SUPER"; suffix = "M"; };
-        emoji = { prefix = "SUPER"; suffix = "PERIOD"; };
-        power = { prefix = "SUPER"; suffix = "ESCAPE"; };
-        caffeine = { prefix = "SUPER SHIFT"; suffix = "M"; };
-        restart_inspector = { prefix = "SUPER CTRL ALT"; suffix = "B"; };
-      };
+      keybindings = keybinds;
     };
   };
 }

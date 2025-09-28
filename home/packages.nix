@@ -52,7 +52,7 @@
     telegram-desktop
     discord
     loupe
-    nautilus
+    # nautilus
 
     # --- Разное ---
     cowsay

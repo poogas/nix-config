@@ -4,7 +4,8 @@
     ./nix.nix
     ./networking.nix
     ./bluetooth.nix
-    ./localization.nix
+    ./time.nix
+    ./locales.nix
     ./users.nix
     ./hosts.nix
     ./pipewire.nix

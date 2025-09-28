@@ -44,6 +44,16 @@
       flake = false;
     };
 
+    silentSDDM = { 
+      url = "github:uiriansan/SilentSDDM";
+    };
+
+    sddm-dynamic-theme = {
+      url = "github:poogas/nixos-sddm-dynamic-theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.silentSDDM.follows = "silentSDDM";
+    };
+
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";

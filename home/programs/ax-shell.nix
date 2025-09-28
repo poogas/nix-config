@@ -19,8 +19,8 @@ let
 
   # --- Пути к обоям и иконке профиля ---
   wallpapersPath = "${../../home/assets/Wallpapers}";
-  defaultWallpaper = "${../../home/assets/Wallpapers/example-1.jpg}";
-  faceIconPath = "${../../home/assets/avatar.png}";
+  # faceIconPath = "${../../home/assets/avatar.png}";
+  faceIconPath = "${../../home/assets/Wallpapers/example-1.jpg}";
 
   # --- Горячие клавиши ---
   keybinds = {
@@ -43,7 +43,6 @@ let
     caffeine = { prefix = "SUPER SHIFT"; suffix = "M"; };
     restart_inspector = { prefix = "SUPER CTRL ALT"; suffix = "B"; };
   };
-
 in
 {
   imports = [
@@ -97,7 +96,6 @@ in
 
       # --- Обои и иконка профиля ---
       wallpapersDir = wallpapersPath; # Путь к вашей папке с обоями
-      defaultWallpaper = defaultWallpaper; # Путь к обоям по умолчанию
       defaultFaceIcon = faceIconPath;
 
       dashboard.components = {

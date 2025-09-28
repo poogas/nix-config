@@ -1,15 +1,13 @@
-{ username, ... }:
+{ inputs, username, ... }:
 
 {
-  services.displayManager = {
-    autoLogin.enable = true;
-    autoLogin.user = username;
+  imports = [
+    inputs.sddm-dynamic-theme.nixosModules.default
+  ];
 
-    defaultSession = "hyprland-uwsm";
-  };
-
-  services.displayManager.sddm = {
+  services.sddm-dynamic-theme = {
     enable = true;
-    wayland.enable = true;
+    username = username;
+    # sourceWallpaperPath = "/путь/к/другим/обоям"; # Можно переопределить, если нужно
   };
 }

@@ -4,5 +4,6 @@
     ./sddm.nix
     ./power-management.nix
     ./play-nix.nix
+    ./gvfs.nix
   ];
 }

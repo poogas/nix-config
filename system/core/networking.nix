@@ -1,5 +1,9 @@
-{ hostname, ... }:
+{ inputs, hostname, pkgs, ... }:
+
 {
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
+  networking.hostFiles = [
+    "${inputs.malware-hosts}/hosts"
+  ];
 }

@@ -44,16 +44,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1759083530,
+        "lastModified": 1759083620,
         "narHash": "sha256-GRM+Q880/HIqFqqG/gKaJko6nXltxCF4s2rw56NRYk8=",
         "owner": "poogas",
         "repo": "Ax-Shell",
-        "rev": "8ffd8a40d8aca78b44a7696f4917093f3b3818db",
+        "rev": "b7d125b1bd56e334c8cc218a5c0a00ba7c89200b",
         "type": "github"
       },
       "original": {
         "owner": "poogas",
-        "ref": "dev",
         "repo": "Ax-Shell",
         "type": "github"
       }
@@ -88,7 +87,7 @@
         "flake-schemas": "flake-schemas_2",
         "home-manager": "home-manager_3",
         "jovian": "jovian_2",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
@@ -464,7 +463,9 @@
         "hyprlang": "hyprlang",
         "hyprutils": "hyprutils",
         "hyprwayland-scanner": "hyprwayland-scanner",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "pre-commit-hooks": "pre-commit-hooks",
         "systems": "systems_4",
         "xdph": "xdph"
@@ -700,6 +701,22 @@
         "type": "github"
       }
     },
+    "malware-hosts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1759083372,
+        "narHash": "sha256-WUma8PjfAcbTGwwK6c9e2xLDcyCuKvamF1gBW7AytYs=",
+        "owner": "ImMALWARE",
+        "repo": "dns.malw.link",
+        "rev": "ce2dc56e23918e7f93b6edadd885d64fb1545ec4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ImMALWARE",
+        "repo": "dns.malw.link",
+        "type": "github"
+      }
+    },
     "matugen-themes": {
       "flake": false,
       "locked": {
@@ -785,22 +802,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1758198701,
-        "narHash": "sha256-7To75JlpekfUmdkUZewnT6MoBANS0XVypW6kjUOXQwc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "0147c2f1d54b30b5dd6d4a8c8542e8d7edf93b5d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1759036355,
         "narHash": "sha256-0m27AKv6ka+q270dw48KflE0LwQYrO7Fm4/2//KCVWg=",
         "owner": "nixos",
@@ -815,7 +816,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1759147044,
         "narHash": "sha256-3ZPFytJOcLjTChljeaGgoaNj+tOqzgEpqZAvRe3bU90=",
@@ -883,9 +884,10 @@
         "chaotic": "chaotic",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
+        "malware-hosts": "malware-hosts",
         "matugen-themes": "matugen-themes",
         "nixos-ddcci-nvidia": "nixos-ddcci-nvidia",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "play-nix": "play-nix",
         "sddm-dynamic-theme": "sddm-dynamic-theme",
         "silentSDDM": "silentSDDM",
@@ -945,11 +947,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1759157567,
-        "narHash": "sha256-nk88DJSAxr8yZAeXT2MbzhvCcXBKsHNnLowuVuq75XM=",
+        "lastModified": 1759167324,
+        "narHash": "sha256-Uc4CMAwj25A7UT0YsovKNAhfZK8B/amio6v+OqgqZGU=",
         "owner": "poogas",
         "repo": "nixos-sddm-dynamic-theme",
-        "rev": "7eb457df9dc257100e088701f740e64dfcfbd41c",
+        "rev": "634e3fbf3ea4012b8c633d00675696b8b971362c",
         "type": "github"
       },
       "original": {

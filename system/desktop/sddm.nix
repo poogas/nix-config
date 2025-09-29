@@ -1,4 +1,4 @@
-{ inputs, username, ... }:
+{ inputs, config, username, ... }:
 
 {
   imports = [
@@ -8,6 +8,10 @@
   services.sddm-dynamic-theme = {
     enable = true;
     username = username;
-    # sourceWallpaperPath = "/путь/к/другим/обоям"; # Можно переопределить, если нужно
+
+    avatar = {
+      enable = true;
+      sourcePath = config.home-manager.users.${username}.programs.ax-shell.settings.defaultFaceIcon;
+    };
   };
 }

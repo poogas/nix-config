@@ -1,5 +1,10 @@
 { username, stateVersion, inputs, pkgs, ... }:
 
+let
+  cursorPackage = pkgs.oreo-cursors-plus;
+  cursorName    = "oreo_black_cursors";
+  cursorSize    = 30;
+in
 {
   imports = [
     ./programs
@@ -26,9 +31,9 @@
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
-    package = pkgs.oreo-cursors-plus;
-    name = "oreo_black_cursors";
-    size = 30;
+    package = cursorPackage;
+    name = cursorName;
+    size = cursorSize;
   };
 
   home.stateVersion = stateVersion;

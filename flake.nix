@@ -26,10 +26,11 @@
     # Это позволяет нам использовать самую последнюю версию Hyprland.
     hyprland = {
       url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ax-shell = {
-      url = "github:poogas/Ax-Shell/dev";
+      url = "github:poogas/Ax-Shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -67,6 +68,11 @@
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    malware-hosts = {
+      url = "github:ImMALWARE/dns.malw.link";
+      flake = false;
     };
   };
 

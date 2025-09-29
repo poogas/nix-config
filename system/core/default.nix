@@ -7,10 +7,9 @@
     ./time.nix
     ./locales.nix
     ./users.nix
-    ./hosts.nix
     ./pipewire.nix
     ./security.nix
-    ./zswap.nix
+    ./zram.nix
     ./zapret.nix
     ./fonts.nix
     ./gpu-screen-recorder.nix

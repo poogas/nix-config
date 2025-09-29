@@ -9,9 +9,12 @@ let
   # wallpaperTransition = [ "img" "-t" "wipe" "--transition-duration" "0.8" "--transition-angle" "90" "--transition-fps" "165" "-f" "Lanczos3" ];
   # wallpaperTransition = [ "img" "-t" "outer" "--transition-duration" "2.0" "--transition-step" "100" "--transition-fps" "165" "-f" "Lanczos3" ];
 
-  cursorTheme = "Bibata-Modern-Ice";
-  cursorSize = 30;
-  cursorPackage = pkgs.oreo-cursors-plus;
+  cursor = {
+    # Ссылаемся на значения из home.pointerCursor
+    theme   = config.home.pointerCursor.name;
+    size    = config.home.pointerCursor.size;
+    package = config.home.pointerCursor.package;
+  };
 
   barTheme = "Pills";  # "Pills", "Dense", "Edge"
   dockTheme = "Pills"; # "Pills", "Dense", "Edge"
@@ -19,8 +22,7 @@ let
 
   # --- Пути к обоям и иконке профиля ---
   wallpapersPath = "${../../home/assets/Wallpapers}";
-  # faceIconPath = "${../../home/assets/avatar.png}";
-  faceIconPath = "${../../home/assets/Wallpapers/example-1.jpg}";
+  faceIconPath = "${../../home/assets/avatar.png}";
 
   # --- Горячие клавиши ---
   keybinds = {
@@ -88,11 +90,7 @@ in
       datetime12hFormat = false;   # Использовать 12-часовой формат времени (true/false)
       cornersVisible = true;       # Показывать декоративные закругленные углы по краям экрана
 
-      cursor = {
-        theme = cursorTheme; # Название темы
-        size = cursorSize;   # Размер
-        package = cursorPackage; # Пакет, предоставляющий тему
-      };
+      cursor = cursor;
 
       # --- Обои и иконка профиля ---
       wallpapersDir = wallpapersPath; # Путь к вашей папке с обоями

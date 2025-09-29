@@ -9,7 +9,9 @@
   inputs = {
     # 1. Главный набор пакетов NixOS. Это самый важный ингредиент.
     # Мы используем ветку "nixos-unstable", чтобы получать самые свежие пакеты и обновления.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
 
     # 2. Инструмент для управления пользовательскими настройками ("дотфайлами").
     home-manager = {
@@ -22,21 +24,28 @@
 
     # 3. Пакет для оконного менеджера Hyprland, напрямую от разработчиков.
     # Это позволяет нам использовать самую последнюю версию Hyprland.
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+    };
 
     ax-shell = {
       url = "github:poogas/Ax-Shell/dev";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    play-nix.url = "github:TophC7/play.nix";
+    play-nix = {
+      url = "github:TophC7/play.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-ddcci-nvidia = {
       url = "github:poogas/nixos-ddcci-nvidia";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     matugen-themes = {
@@ -44,8 +53,9 @@
       flake = false;
     };
 
-    silentSDDM = { 
+    silentSDDM = {
       url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     sddm-dynamic-theme = {
@@ -57,8 +67,7 @@
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
-  };
-
+    };
   };
 
   # --- Выходы (Outputs) ---

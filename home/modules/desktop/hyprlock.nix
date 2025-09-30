@@ -5,12 +5,12 @@
     enable = true;
     settings = {
       # Указываем hyprlock, где брать переменные цветов ($primary, $foreground и т.д.)
-      source = "${config.xdg.configHome}/ax-shell/config/hypr/colors.conf";
+      source = config.programs.ax-shell.hyprlandColorsConfPath;
 
       # --- Секция BACKGROUND ---
       background = {
         monitor = ""; # Пустая строка означает "на всех мониторах"
-        path = "${config.xdg.configHome}/ax-shell/current.wall";
+        path = config.programs.ax-shell.currentWallpaperPath;
         blur_passes = 3;
         blur_size = 3;
         contrast = 1.0;
@@ -83,7 +83,7 @@
 
       # --- Секция PICTURE ---
       image = {
-        path = "${config.xdg.configHome}/ax-shell/face.icon";
+        path = config.programs.ax-shell.faceIconPath;
         size = 200;
         position = "0, 75";
         halign = "center";

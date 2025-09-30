@@ -21,7 +21,7 @@ in
     portalPackage = null;
 
     extraConfig = ''
-      source = ${config.xdg.configHome}/ax-shell/config/hypr/colors.conf
+      source = ${config.programs.ax-shell.hyprlandColorsConfPath}
 
       general {
         col.active_border = rgb($primary)

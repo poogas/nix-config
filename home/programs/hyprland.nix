@@ -11,7 +11,14 @@ in
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.enable = false;
+
+    systemd = {
+      enable = true;
+      variables = [ "--all" ];
+    };
+
+    package = null;
+    portalPackage = null;
 
     extraConfig = ''
       source = ${config.xdg.configHome}/ax-shell/config/hypr/colors.conf

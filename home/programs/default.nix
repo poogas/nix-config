@@ -1,5 +1,6 @@
 {
   imports = [
+    ./gtk.nix
     ./xdg.nix
     ./alacritty.nix
     ./git.nix

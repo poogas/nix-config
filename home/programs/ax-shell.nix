@@ -64,14 +64,14 @@ in
           input_path = "${inputs.matugen-themes}/templates/alacritty.toml";
           output_path = "${config.xdg.configHome}/alacritty/matugen_colors.toml";
         };
-        # "gtk3" = {
-        #   input_path = "${inputs.matugen-themes}/templates/gtk-colors.css";
-        #   output_path = "${config.xdg.configHome}/gtk-3.0/gtk.css";
-        # };
-        # "gtk4" = {
-        #   input_path = "${inputs.matugen-themes}/templates/gtk-colors.css";
-        #   output_path = "${config.xdg.configHome}/gtk-4.0/gtk.css";
-        # };
+        "gtk3" = {
+          input_path = "${inputs.matugen-themes}/templates/gtk-colors.css";
+          output_path = "${config.xdg.configHome}/gtk-3.0/gtk.css";
+        };
+        "gtk4" = {
+          input_path = "${inputs.matugen-themes}/templates/gtk-colors.css";
+          output_path = "${config.xdg.configHome}/gtk-4.0/gtk.css";
+        };
       };
     };
 

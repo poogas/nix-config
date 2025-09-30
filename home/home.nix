@@ -7,7 +7,7 @@ let
 in
 {
   imports = [
-    ./programs
+    ./modules
     ./packages.nix
   ];
 

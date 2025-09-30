@@ -21,8 +21,8 @@ let
   panelTheme = "Notch"; # "Notch", "Panel"
 
   # --- Пути к обоям и иконке профиля ---
-  wallpapersPath = "${../../home/assets/Wallpapers}";
-  faceIconPath = "${../../home/assets/avatar.png}";
+  wallpapersPath = "${../../../home/assets/Wallpapers}";
+  faceIconPath = "${../../../home/assets/avatar.png}";
 
   # --- Горячие клавиши ---
   keybinds = {

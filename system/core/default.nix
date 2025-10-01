@@ -1,6 +1,7 @@
 {
   imports = [
     ./boot.nix
+    ./systemd.nix
     ./nix.nix
     ./networking.nix
     ./bluetooth.nix

@@ -4,9 +4,15 @@ let
   axShellSettings = config.programs.ax-shell.settings;
 
   animation_type =
-    if builtins.elem axShellSettings.bar.position [ "Left" "Right" ]
-    then "slidefadevert"
-    else "slidefade";
+    if
+      builtins.elem axShellSettings.bar.position [
+        "Left"
+        "Right"
+      ]
+    then
+      "slidefadevert"
+    else
+      "slidefade";
 in
 {
   wayland.windowManager.hyprland = {

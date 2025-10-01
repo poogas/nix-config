@@ -1,8 +1,25 @@
-{ pkgs, inputs, config, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 
 let
   # --- Варианты анимации смены обоев ---
-  wallpaperTransition = [ "img" "-t" "grow" "--transition-duration" "1.2" "--transition-pos" "center" "--transition-fps" "165" "-f" "Lanczos3" ];
+  wallpaperTransition = [
+    "img"
+    "-t"
+    "grow"
+    "--transition-duration"
+    "1.2"
+    "--transition-pos"
+    "center"
+    "--transition-fps"
+    "165"
+    "-f"
+    "Lanczos3"
+  ];
   # wallpaperTransition = [ "img" "-t" "fade" "--transition-duration" "1.2" "--transition-step" "255" "--transition-fps" "165" "-f" "Lanczos3" ];
   # wallpaperTransition = [ "img" "-t" "wipe" "--transition-duration" "0.5" "--transition-angle" "45" "--transition-fps" "165" "-f" "Lanczos3" ];
   # wallpaperTransition = [ "img" "-t" "wave" "--transition-duration" "1.5" "--transition-angle" "0" "--transition-fps" "165" "-f" "Lanczos3" ];
@@ -11,12 +28,12 @@ let
 
   cursor = {
     # Ссылаемся на значения из home.pointerCursor
-    theme   = config.home.pointerCursor.name;
-    size    = config.home.pointerCursor.size;
+    theme = config.home.pointerCursor.name;
+    size = config.home.pointerCursor.size;
     package = config.home.pointerCursor.package;
   };
 
-  barTheme = "Pills";  # "Pills", "Dense", "Edge"
+  barTheme = "Pills"; # "Pills", "Dense", "Edge"
   dockTheme = "Pills"; # "Pills", "Dense", "Edge"
   panelTheme = "Notch"; # "Notch", "Panel"
 
@@ -26,24 +43,78 @@ let
 
   # --- Горячие клавиши ---
   keybinds = {
-    restart = { prefix = "SUPER ALT"; suffix = "B"; };
-    axmsg = { prefix = "SUPER"; suffix = "A"; };
-    dash = { prefix = "SUPER"; suffix = "D"; };
-    bluetooth = { prefix = "SUPER"; suffix = "B"; };
-    pins = { prefix = "SUPER"; suffix = "Q"; };
-    kanban = { prefix = "SUPER"; suffix = "N"; };
-    launcher = { prefix = "SUPER"; suffix = "R"; };
-    tmux = { prefix = "SUPER"; suffix = "T"; };
-    cliphist = { prefix = "SUPER"; suffix = "V"; };
-    toolbox = { prefix = "SUPER"; suffix = "S"; };
-    overview = { prefix = "SUPER"; suffix = "TAB"; };
-    wallpapers = { prefix = "SUPER"; suffix = "COMMA"; };
-    randwall = { prefix = "SUPER SHIFT"; suffix = "COMMA"; };
-    mixer = { prefix = "SUPER"; suffix = "M"; };
-    emoji = { prefix = "SUPER"; suffix = "PERIOD"; };
-    power = { prefix = "SUPER"; suffix = "ESCAPE"; };
-    caffeine = { prefix = "SUPER SHIFT"; suffix = "M"; };
-    restart_inspector = { prefix = "SUPER CTRL ALT"; suffix = "B"; };
+    restart = {
+      prefix = "SUPER ALT";
+      suffix = "B";
+    };
+    axmsg = {
+      prefix = "SUPER";
+      suffix = "A";
+    };
+    dash = {
+      prefix = "SUPER";
+      suffix = "D";
+    };
+    bluetooth = {
+      prefix = "SUPER";
+      suffix = "B";
+    };
+    pins = {
+      prefix = "SUPER";
+      suffix = "Q";
+    };
+    kanban = {
+      prefix = "SUPER";
+      suffix = "N";
+    };
+    launcher = {
+      prefix = "SUPER";
+      suffix = "R";
+    };
+    tmux = {
+      prefix = "SUPER";
+      suffix = "T";
+    };
+    cliphist = {
+      prefix = "SUPER";
+      suffix = "V";
+    };
+    toolbox = {
+      prefix = "SUPER";
+      suffix = "S";
+    };
+    overview = {
+      prefix = "SUPER";
+      suffix = "TAB";
+    };
+    wallpapers = {
+      prefix = "SUPER";
+      suffix = "COMMA";
+    };
+    randwall = {
+      prefix = "SUPER SHIFT";
+      suffix = "COMMA";
+    };
+    mixer = {
+      prefix = "SUPER";
+      suffix = "M";
+    };
+    emoji = {
+      prefix = "SUPER";
+      suffix = "PERIOD";
+    };
+    power = {
+      prefix = "SUPER";
+      suffix = "ESCAPE";
+    };
+    caffeine = {
+      prefix = "SUPER SHIFT";
+      suffix = "M";
+    };
+    restart_inspector = {
+      prefix = "SUPER CTRL ALT";
+      suffix = "B";
+    };
   };
 in
 {
@@ -64,14 +135,6 @@ in
           input_path = "${inputs.matugen-themes}/templates/alacritty.toml";
           output_path = "${config.xdg.configHome}/alacritty/matugen_colors.toml";
         };
-        "gtk3" = {
-          input_path = "${inputs.matugen-themes}/templates/gtk-colors.css";
-          output_path = "${config.xdg.configHome}/gtk-3.0/gtk.css";
-        };
-        "gtk4" = {
-          input_path = "${inputs.matugen-themes}/templates/gtk-colors.css";
-          output_path = "${config.xdg.configHome}/gtk-4.0/gtk.css";
-        };
       };
     };
 
@@ -87,8 +150,8 @@ in
 
       # --- Общие настройки ---
       terminalCommand = "alacritty -e"; # Какой терминал использовать для tmux
-      datetime12hFormat = false;   # Использовать 12-часовой формат времени (true/false)
-      cornersVisible = true;       # Показывать декоративные закругленные углы по краям экрана
+      datetime12hFormat = false; # Использовать 12-часовой формат времени (true/false)
+      cornersVisible = true; # Показывать декоративные закругленные углы по краям экрана
 
       cursor = cursor;
 
@@ -97,11 +160,11 @@ in
       defaultFaceIcon = faceIconPath;
 
       dashboard.components = {
-        widgets = true;    # Показать виджеты
-        pins = false;      # Показать закрепленные приложения
-        kanban = true;    # Скрыть канбан-доску
+        widgets = true; # Показать виджеты
+        pins = false; # Показать закрепленные приложения
+        kanban = true; # Скрыть канбан-доску
         wallpapers = true; # Показать управление обоями
-        mixer = true;     # Скрыть микшер
+        mixer = true; # Скрыть микшер
       };
 
       # --- Настройки Бара (верхней панели) ---
@@ -111,9 +174,9 @@ in
         theme = barTheme;
 
         workspace = {
-          showNumber = false;         # Показывать номера рабочих столов (true/false)
+          showNumber = false; # Показывать номера рабочих столов (true/false)
           useChineseNumerals = false; # Использовать китайские цифры (true/false)
-          hideSpecial = true;         # Скрывать "специальные" рабочие столы (например, scratchpad)
+          hideSpecial = true; # Скрывать "специальные" рабочие столы (например, scratchpad)
         };
 
         metrics = {
@@ -140,9 +203,9 @@ in
 
       # --- Настройки Дока (нижней панели с иконками) ---
       dock = {
-        enable = false;          # Включить док (true/false)
+        enable = false; # Включить док (true/false)
         alwaysOccluded = false; # Держать док всегда под окнами (true/false)
-        iconSize = 28;         # Размер иконок в пикселях
+        iconSize = 28; # Размер иконок в пикселях
         theme = dockTheme;
       };
 
@@ -155,8 +218,14 @@ in
       # --- Настройки Уведомлений ---
       notifications = {
         position = "Bottom"; # "Top", "Bottom"
-        limitedAppsHistory = [ "Spotify" "Clementine" ]; # Приложения с ограниченной историей
-        historyIgnoredApps = [ "Hyprshot" "flameshot" ]; # Игнорируемые приложения
+        limitedAppsHistory = [
+          "Spotify"
+          "Clementine"
+        ]; # Приложения с ограниченной историей
+        historyIgnoredApps = [
+          "Hyprshot"
+          "flameshot"
+        ]; # Игнорируемые приложения
       };
 
       # --- Настройки виджетов системных метрик ---

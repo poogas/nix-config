@@ -1,13 +1,30 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     xwayland.enable = true;
     withUWSM = true;
   };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  # ---> КЛЮЧЕВОЕ ИЗМЕНЕНИЕ <---
+  # Устанавливаем пакет с нашей новой черной темой
+  environment.systemPackages = [
+    pkgs.adw-gtk3
+  ];
 
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";

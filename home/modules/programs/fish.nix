@@ -5,6 +5,16 @@
 {
   programs.fish = {
     enable = true;
+
+    functions = {
+      hx = {
+        body = ''
+          command hx $argv
+          printf '\033[0 q'
+        '';
+      };
+    };
+
     shellInit = ''
       # --- Основные цвета терминала ---
       set -g fish_color_normal '#F1DEDD'              # Стандартный текст (on_surface)
@@ -39,7 +49,7 @@
 
       # --- Остальные настройки Fish ---
       set -gx fish_greeting # Убрать приветствие
-      set -gx EDITOR nvim
+      set -gx EDITOR hx
 
       # Инициализация Starship
       starship init fish | source

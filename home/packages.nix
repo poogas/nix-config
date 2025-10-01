@@ -25,7 +25,6 @@
     glow
 
     # --- Инструменты для разработки и мониторинга ---
-    neovim
     nix-output-monitor
     hugo
     glow
@@ -39,6 +38,10 @@
     ethtool
     pciutils
     usbutils
+    nil
+    yaml-language-server
+    pyright
+    ruff
 
     # --- Сетевые утилиты ---
     mtr

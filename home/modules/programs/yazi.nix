@@ -40,7 +40,7 @@
           { run = "loupe \"$@\""; desc = "View with Loupe"; orphan = true; }
         ];
         edit = [
-          { run = "nvim \"$@\""; desc = "Edit with Neovim"; block = true; }
+          { run = "hx \"$@\""; desc = "Edit with Helix"; block = true; }
         ];
       };
 

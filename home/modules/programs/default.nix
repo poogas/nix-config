@@ -6,5 +6,6 @@
     ./fish.nix
     ./zen-browser.nix
     ./yazi.nix
+    ./helix.nix
   ];
 }

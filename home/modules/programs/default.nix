@@ -5,5 +5,6 @@
     ./starship.nix
     ./fish.nix
     ./zen-browser.nix
+    ./yazi.nix
   ];
 }

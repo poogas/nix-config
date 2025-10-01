@@ -21,6 +21,7 @@
     zstd
     gnupg
     wget
+    ueberzugpp
 
     # --- Инструменты для разработки и мониторинга ---
     neovim

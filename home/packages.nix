@@ -22,6 +22,7 @@
     gnupg
     wget
     ueberzugpp
+    glow
 
     # --- Инструменты для разработки и мониторинга ---
     neovim
@@ -53,7 +54,6 @@
     telegram-desktop
     discord
     loupe
-    # nautilus
 
     # --- Разное ---
     cowsay

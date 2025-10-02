@@ -54,15 +54,9 @@
       flake = false;
     };
 
-    silentSDDM = {
-      url = "github:uiriansan/SilentSDDM";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     sddm-dynamic-theme = {
       url = "github:poogas/nixos-sddm-dynamic-theme";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.silentSDDM.follows = "silentSDDM";
     };
 
     zen-browser = {
@@ -81,7 +75,8 @@
   # В нашем случае, он производит конфигурации операционных систем.
   # Функция `{ self, nixpkgs, ... }@inputs:` принимает все наши 'входы' в качестве аргументов.
   # `@inputs` — это трюк, который позволяет собрать все входы в одну переменную `inputs`.
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs =
+    { self, nixpkgs, ... }@inputs:
     # Блок `let...in` позволяет нам определить локальные переменные, которые мы будем
     # использовать ниже. Это помогает сделать код более чистым.
     let
@@ -102,7 +97,8 @@
       # --- Функция-"Фабрика" для сборки системы ---
       # Это наша главная функция-помощник. Она принимает имя хоста (hostname) и его
       # конфигурацию (config) и "собирает" из них полноценную систему NixOS.
-      makeSystem = hostname: config:
+      makeSystem =
+        hostname: config:
         # Это основная функция из nixpkgs, которая и создает систему.
         nixpkgs.lib.nixosSystem {
           # Указываем архитектуру системы (например, "x86_64-linux").
@@ -129,7 +125,10 @@
           # Самое главное: теперь в любом нашем `.nix` файле в `modules` мы можем
           # просто написать ` { username, inputs, ... }: ` в шапке, и NixOS
           # автоматически подставит туда нужные значения!
-          specialArgs = { inherit inputs hostname; } // config;
+          specialArgs = {
+            inherit inputs hostname;
+          }
+          // config;
 
           # --- Список модулей конфигурации ---
           # Здесь мы перечисляем все "части", из которых будет состоять наша система.
@@ -139,10 +138,11 @@
             ./system/configuration.nix
 
             # Наш кастомный модуль для интеграции Home Manager.
-	    ./system/modules/home-manager.nix
+            ./system/modules/home-manager.nix
           ];
         };
-    in # Конец блока `let`.
+    in
+    # Конец блока `let`.
     {
       # --- Запуск конвейера ---
       # Здесь мы говорим Nix'у, что наш флейк производит конфигурации NixOS.

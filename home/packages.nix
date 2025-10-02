@@ -56,6 +56,7 @@
     # --- Приложения с GUI ---
     telegram-desktop
     discord
+    betterdiscordctl
     loupe
     keyguard
 

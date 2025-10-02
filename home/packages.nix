@@ -57,6 +57,7 @@
     telegram-desktop
     discord
     loupe
+    keyguard
 
     # --- Разное ---
     cowsay

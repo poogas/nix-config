@@ -15,17 +15,6 @@
     withUWSM = true;
   };
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
-
-  # ---> КЛЮЧЕВОЕ ИЗМЕНЕНИЕ <---
-  # Устанавливаем пакет с нашей новой черной темой
-  environment.systemPackages = [
-    pkgs.adw-gtk3
-  ];
-
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";
     WLR_NO_HARDWARE_CURSORS = "1";

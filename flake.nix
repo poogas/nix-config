@@ -64,8 +64,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    malware-hosts = {
-      url = "github:ImMALWARE/dns.malw.link";
+    zapret-hosts = {
+      url = "github:egor-white/zaprett";
       flake = false;
     };
   };

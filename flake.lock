@@ -44,11 +44,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1759594941,
-        "narHash": "sha256-ac0uzN3kE9zvNOA0Cc/t5aO0uJB9gMLq2/EcRdxwnag=",
+        "lastModified": 1759580502,
+        "narHash": "sha256-sH35UVjjqSVWHWdsrcW2xlDDdoLgKnQw4QgHMppkn4M=",
         "owner": "poogas",
         "repo": "Ax-Shell",
-        "rev": "49f0aefc7a9bf85b8b87ef44e9fe2d06c180698f",
+        "rev": "a8ace8617a3fd297db20b459059f36415689fdad",
         "type": "github"
       },
       "original": {
@@ -702,22 +702,6 @@
         "type": "github"
       }
     },
-    "malware-hosts": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1759518222,
-        "narHash": "sha256-acPTX2rAV70/r//vdzKWsoRyZNILt7yVzoHpr6FVV1I=",
-        "owner": "ImMALWARE",
-        "repo": "dns.malw.link",
-        "rev": "68379373377b4de541c2262a842ae7e724c02b28",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ImMALWARE",
-        "repo": "dns.malw.link",
-        "type": "github"
-      }
-    },
     "matugen-themes": {
       "flake": false,
       "locked": {
@@ -901,12 +885,12 @@
         "chaotic": "chaotic",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
-        "malware-hosts": "malware-hosts",
         "matugen-themes": "matugen-themes",
         "nixos-ddcci-nvidia": "nixos-ddcci-nvidia",
         "nixpkgs": "nixpkgs",
         "play-nix": "play-nix",
         "sddm-dynamic-theme": "sddm-dynamic-theme",
+        "zapret-hosts": "zapret-hosts",
         "zen-browser": "zen-browser"
       }
     },
@@ -1124,6 +1108,22 @@
       "original": {
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
+        "type": "github"
+      }
+    },
+    "zapret-hosts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1759246039,
+        "narHash": "sha256-1twIK/9V6QCaeQf4e02meM4/jIehU3AkgqZSl9Ek6bg=",
+        "owner": "egor-white",
+        "repo": "zaprett",
+        "rev": "9ef7c70f788292a16a68b7a0744e575c21f868c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "egor-white",
+        "repo": "zaprett",
         "type": "github"
       }
     },

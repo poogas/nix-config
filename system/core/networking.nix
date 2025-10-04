@@ -1,9 +1,14 @@
-{ inputs, hostname, pkgs, ... }:
+{
+  inputs,
+  hostname,
+  pkgs,
+  ...
+}:
 
 {
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
   networking.hostFiles = [
-    "${inputs.malware-hosts}/hosts"
+    "${inputs.zapret-hosts}/hosts/hosts"
   ];
 }

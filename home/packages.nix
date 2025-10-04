@@ -42,6 +42,8 @@
     yaml-language-server
     pyright
     ruff
+    python313Packages.pygobject-stubs
+    python312Packages.pygobject-stubs
 
     # --- Сетевые утилиты ---
     mtr

@@ -7,5 +7,6 @@
     ./zen-browser.nix
     ./yazi.nix
     ./helix.nix
+    ./direnv.nix
   ];
 }

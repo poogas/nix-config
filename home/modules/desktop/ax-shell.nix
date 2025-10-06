@@ -1,5 +1,4 @@
 {
-  pkgs,
   inputs,
   config,
   ...
@@ -137,12 +136,6 @@ in
         };
       };
     };
-
-    # # --- НАСТРОЙКИ ВЕРХНЕГО УРОВНЯ ---
-    # autostart = {
-    #   enable = true; # Автоматически запускать Ax-Shell вместе с Hyprland
-    #   logPath = "/home/qwerty/.local/state/ax-shell/main.log"; # Путь к лог-файлу
-    # };
 
     # --- ГЛАВНЫЙ БЛОК НАСТРОЕК (settings) ---
     # Все, что находится здесь, передается в JSON-конфиг для самого приложения.

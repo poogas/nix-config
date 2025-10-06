@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 
 {
   programs.alacritty = {
@@ -11,7 +11,7 @@
       };
       colors = {
         primary = {
-          background = "#000000"; 
+          background = "#000000";
         };
       };
       env.TERM = "xterm-256color";
@@ -27,13 +27,17 @@
           x = 10;
           y = 10;
         };
-	dynamic_padding = true;
+        dynamic_padding = true;
       };
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
       keyboard = {
         bindings = [
-          { key = "V"; mods = "Control"; action = "Paste"; }
+          {
+            key = "V";
+            mods = "Control";
+            action = "Paste";
+          }
         ];
       };
       cursor = {

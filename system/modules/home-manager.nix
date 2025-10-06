@@ -1,4 +1,9 @@
-{ username, stateVersion, inputs, ... }:
+{
+  username,
+  stateVersion,
+  inputs,
+  ...
+}:
 
 {
   imports = [

@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 
 let
   axShellSettings = config.programs.ax-shell.settings;

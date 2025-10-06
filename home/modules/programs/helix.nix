@@ -10,6 +10,7 @@
       yaml-language-server
       pyright
       ruff
+      nixfmt
     ];
 
     settings = {
@@ -91,13 +92,14 @@
         {
           name = "nix";
           auto-format = true;
-          formatter.command = "nixfmt";
           language-servers = [ "nixd" ];
+          formatter = {
+            command = "nixfmt";
+          };
         }
         {
           name = "python";
           auto-format = true;
-
           language-servers = [
             "pyright"
           ];

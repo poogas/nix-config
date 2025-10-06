@@ -1,7 +1,3 @@
-# home/modules/fish.nix
-
-{ pkgs, ... }:
-
 {
   programs.fish = {
     enable = true;

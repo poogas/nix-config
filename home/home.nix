@@ -1,9 +1,14 @@
-{ username, stateVersion, inputs, pkgs, ... }:
+{
+  username,
+  stateVersion,
+  pkgs,
+  ...
+}:
 
 let
   cursorPackage = pkgs.oreo-cursors-plus;
-  cursorName    = "oreo_black_cursors";
-  cursorSize    = 30;
+  cursorName = "oreo_black_cursors";
+  cursorSize = 30;
 in
 {
   imports = [
@@ -15,8 +20,8 @@ in
   home.homeDirectory = "/home/${username}";
 
   home.language = {
-    base = "en_US.UTF-8"; 
-    messages = "en_US.UTF-8"; 
+    base = "en_US.UTF-8";
+    messages = "en_US.UTF-8";
     time = "ru_RU.UTF-8";
     numeric = "ru_RU.UTF-8";
     monetary = "ru_RU.UTF-8";
@@ -30,7 +35,6 @@ in
 
   home.pointerCursor = {
     gtk.enable = true;
-    # x11.enable = true;
     package = cursorPackage;
     name = cursorName;
     size = cursorSize;

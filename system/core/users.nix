@@ -4,7 +4,13 @@
   users.users."${username}" = {
     isNormalUser = true;
     description = username;
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" "power" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "audio"
+      "video"
+      "power"
+    ];
     shell = pkgs.fish;
   };
 }

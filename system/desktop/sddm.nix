@@ -1,4 +1,9 @@
-{ inputs, config, username, ... }:
+{
+  inputs,
+  config,
+  username,
+  ...
+}:
 
 {
   imports = [

@@ -6,7 +6,7 @@
     defaultEditor = true;
 
     extraPackages = with pkgs; [
-      nil
+      nixd
       yaml-language-server
       pyright
       ruff
@@ -20,9 +20,14 @@
         color-modes = true;
         idle-timeout = 100;
         scrolloff = 10;
-        soft-wrap.enable = true;
+        soft-wrap = {
+          enable = true;
+        };
         bufferline = "multiple";
         line-number = "relative";
+        file-picker = {
+          hidden = false;
+        };
         lsp = {
           display-messages = true;
           display-inlay-hints = false;
@@ -47,6 +52,7 @@
             "file-modification-indicator"
             "read-only-indicator"
             "spinner"
+            "version-control"
           ];
           center = [ "file-name" ];
           right = [
@@ -58,9 +64,11 @@
             "file-line-ending"
             "file-encoding"
           ];
-          mode.normal = "N";
-          mode.insert = "I";
-          mode.select = "S";
+          mode = {
+            normal = "N";
+            insert = "I";
+            select = "S";
+          };
         };
       };
     };
@@ -83,8 +91,8 @@
         {
           name = "nix";
           auto-format = true;
-          formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
-          language-servers = [ "nil" ];
+          formatter.command = "nixfmt";
+          language-servers = [ "nixd" ];
         }
         {
           name = "python";
@@ -97,6 +105,8 @@
             command = "ruff";
             args = [
               "format"
+              "--line-length"
+              "88"
               "-"
             ];
           };

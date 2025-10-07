@@ -89,6 +89,7 @@ in
         "tile, xwayland:1"
         "opacity 0.95 0.90, class:^(Alacritty)$"
         "opacity 1 0.90, class:^(zen-beta)$"
+        "opacity 0.95 0.90, class:^(discord)$"
       ];
       "$mainMod" = "SUPER";
       bind = config.programs.ax-shell.hyprlandBinds ++ [

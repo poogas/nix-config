@@ -8,5 +8,6 @@
     ./yazi.nix
     ./helix.nix
     ./direnv.nix
+    ./nixcord.nix
   ];
 }

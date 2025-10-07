@@ -1,5 +1,12 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 
+let
+  discordClientSettings = {
+    openasar = {
+      setup = true;
+    };
+  };
+in
 {
   imports = [
     inputs.nixcord.homeModules.nixcord
@@ -7,13 +14,6 @@
 
   programs.nixcord = {
     enable = true;
-    discord = {
-      settings = {
-        openasar = {
-          setup = true;
-        };
-      };
-    };
     config.plugins = {
       translate = {
         enable = true;
@@ -27,5 +27,9 @@
         };
       };
     };
+  };
+  home.file.".config/discord/settings.json" = {
+    text = lib.generators.toJSON { } discordClientSettings;
+    force = true;
   };
 }

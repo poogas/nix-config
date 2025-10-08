@@ -37,7 +37,7 @@ let
   panelTheme = "Notch"; # "Notch", "Panel"
 
   # --- Пути к обоям и иконке профиля ---
-  wallpapersPath = "${../../../home/assets/Wallpapers}";
+  wallpapersPath = "${config.xdg.configHome}/nix-config/home/assets/Wallpapers";
   faceIconPath = "${../../../home/assets/avatar.png}";
 
   # --- Горячие клавиши ---
